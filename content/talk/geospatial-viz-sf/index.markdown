@@ -1,13 +1,13 @@
 ---
 title: "Geospatial visualization: vector maps"
-date: 2019-11-28T12:30:00
-publishDate: 2019-05-22T13:30:00
-draft: false
+date: 2020-05-27T15:00:00-06:00
+publishDate: 2019-05-22T13:30:00-06:00
+draft: true
 type: "talk"
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-time_end: 2019-11-28T13:50:00
+time_end: 2020-05-27T16:20:00-06:00
 all_day: false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
@@ -18,7 +18,7 @@ abstract: ""
 summary: "Review methods for storing spatial data, define simple features data frames, and construct vector maps in ggplot2."
 
 # Location of event.
-location: "Room 104, Stuart Hall, Chicago, IL"
+location: "Online"
 
 # Is this a selected talk? (true/false)
 selected: false
@@ -58,6 +58,6 @@ math: false
 
 * [Mapping data in *The Truthful Art* by Alberto Cairo](http://proquestcombo.safaribooksonline.com.proxy.uchicago.edu/book/databases-and-reporting-tools/9780133440492/part-iii-functional/ch10_html) - excellent chapter on designing data maps with lots of examples. Though really the entire book is useful if you do a lot of work with data visualizations of any type. **UChicago authentication required.**
 
-## What you need to do
+## What you need to do after class
 
 * [Complete the geospatial visualization homework](/homework/geospatial-viz/)

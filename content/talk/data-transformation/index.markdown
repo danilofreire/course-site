@@ -1,7 +1,7 @@
 ---
 title: "Data transformation"
-date: 2019-10-08T12:30:00
-publishDate: 2019-04-08T13:30:00
+date: 2020-04-13T13:30:00-06:00
+publishDate: 2019-04-08T13:30:00-06:00
 draft: false
 type: "talk"
 
@@ -9,7 +9,7 @@ aliases: ["/cm003.html"]
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-time_end: 2019-10-08T13:50:00
+time_end: 2020-04-13T14:50:00-06:00
 all_day: false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
@@ -20,7 +20,7 @@ abstract: ""
 summary: "Computational problem-solving, verbs for data manipulation, and practice transforming data frames using dplyr."
 
 # Location of event.
-location: "Room 104, Stuart Hall, Chicago, IL"
+location: "Online"
 
 # Is this a selected talk? (true/false)
 selected: false
@@ -34,6 +34,7 @@ url_pdf: ""
 url_slides: "/slides/data-transformation/"
 url_video: ""
 url_code: ""
+url_notes: "https://hackmd.io/@cfss-sp20/data-transformation"
 
 # Does the content use math formatting?
 math: false
@@ -63,13 +64,13 @@ math: false
 
 * [Data Wrangling with `dplyr` and `tidyr` Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
-## What you need to do
+## What you need to do after class
 
-* [Register your GitHub username for the course](hhttps://forms.gle/6YDKXHpEGPkc9sX28) - all remaining homework assignments will be in **private repositories**. Private repos can only be seen and edited by members of our [course organization](https://github.com/uc-cfss). Once you register your GitHub account, I will invite you to join the course organization. If you don't register your account, you won't have access to any of the homework assignments.
+* [Register your GitHub username for the course](https://forms.gle/U58Z6ShPWXewwJoF7) - all remaining homework assignments will be in **private repositories**. Private repos can only be seen and edited by members of our [course organization](https://github.com/cfss-sp20). Once you register your GitHub account, I will invite you to join the course organization. If you don't register your account, you won't have access to any of the homework assignments.
 * Complete your peer evaluations for homework 01. Review the following:
     * [General Homework Rubric](/faq/homework-evaluations/)
     * [Performing peer review](/faq/peer-evaluations/)
     * To find which peers you will evaluate:
-        * Navigate to the [pull request page for `hw01`](https://github.com/uc-cfss/hw01/pulls)
+        * Navigate to the [pull request page for `hw01`](https://github.com/cfss-sp20/hw01/pulls)
         * Click **Reviews** > **Awaiting review from you**
         * If you submitted your pull request on-time, you were randomly assigned two other pull requests to evaluate. If you did not submit your pull request on-time, you are still expected to perform two peer evaluations. Select any two pull requests and provide feedback on their submission.

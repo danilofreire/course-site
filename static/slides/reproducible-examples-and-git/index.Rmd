@@ -1,0 +1,129 @@
+---
+title: "Reproducible examples and Git"
+author: "[MACS 30500](https://cfss.uchicago.edu) <br /> University of Chicago"
+output: rcfss::xaringan
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(cache = TRUE,
+                      fig.retina = 2, fig.width = 12)
+
+library(tidyverse)
+library(rcfss)
+library(gapminder)
+library(here)
+
+set.seed(1234)
+theme_set(theme_minimal(base_size = rcfss::base_size))
+```
+
+# Reproducible examples
+
+* Minimal
+* Complete
+* Verifiable
+
+---
+
+# `reprex`
+
+```{r include = FALSE}
+demo_code <- c(
+  "library(tidyverse)",
+  "count(diamonds, colour)"
+)
+```
+
+```{r asis = TRUE, echo = FALSE, comment = NA}
+cat(demo_code, sep = "\n")
+```
+
+---
+
+# Reprex do's and don'ts
+
+* Use the smallest, simplest, most built-in data possible
+* Include commands on a strict "need to run" basis
+* Consider including "session info"
+* Use good coding style to ensure the readability of your code by other human beings
+* Ensure portability of the code
+
+---
+
+# Build some reproducible examples
+
+<div style="width:100%;height:0;padding-bottom:42%;position:relative;"><iframe src="https://giphy.com/embed/rDIbIO2O7UStO" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+
+---
+
+.center[
+
+![](https://memeshappen.com/media/created/One-does-not-simply-understand-git-meme-60285.jpg)
+
+]
+
+---
+
+# Git
+
+## What files to commit
+
+* Source files
+* Markdown files
+* Data files
+
+## What files to not commit
+
+* Temporary files
+* Log files
+* Files with private details
+* Any file greater than 100 megabytes
+
+---
+
+# `.gitignore`
+
+* System file
+* Tells Git which files/directories to ignore
+
+---
+
+# Git LFS
+
+* [Git Large File Storage](https://git-lfs.github.com/)
+* Separate software for tracking large files
+* Integrates with Git
+* Generally charges a fee
+
+---
+
+# Accidentally cloned from the master
+
+<div style="width:100%;height:0;padding-bottom:50%;position:relative;"><iframe src="https://giphy.com/embed/3oxHQKW9lw6rK9kYtq" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+
+---
+
+# Accidentally cloned from the master
+
+```bash
+remote: Permission to hadley/ggplot2.git denied to bensoltoff.
+fatal: unable to access 'https://github.com/hadley/ggplot2.git/': The requested URL returned error: 403
+```
+
+---
+
+# Avoiding Git problems
+
+1. Commit early and often
+1. Push regularly to GitHub
+
+---
+
+# Burn it all down
+
+.center[
+
+![[Git (via xkcd)](https://xkcd.com/1597/)](https://imgs.xkcd.com/comics/git.png)
+
+]

@@ -31,9 +31,9 @@ Git is a *version control system* originally created for developers to collabora
 
 Git can be used locally by you on a single computer to track changes in a project. You do not need to be connected to the internet to use Git. However if you want to share your work with a larger audience, the easiest solution is to host the repository on a web site for others to download and inspect. You can host a public (open to the world) or private (open to just you or a few individuals) repository. [GitHub](https://www.github.com) has become the largest hoster of Git repositories and includes many useful features beyond the standard Git functions.
 
-Chances are that by now you've seen or even used GitHub. Professionally, you should know how to use Git and GitHub to manage projects and share code. In this class, we will use Git and GitHub to host our [course site](https://github.com/uc-cfss/uc-cfss.github.io), share code, and distribute/collect assignments.
+Chances are that by now you've seen or even used GitHub. Professionally, you should know how to use Git and GitHub to manage projects and share code. In this class, we will use Git and GitHub to host our [course site](https://github.com/uc-cfss/course-site), share code, and distribute/collect assignments.
 
-### Acknowledgments
+## Acknowledgments
 
 
 * This page is derived in part from ["UBC STAT 545A and 547M"](http://stat545.com), licensed under the [CC BY-NC 3.0 Creative Commons License](https://creativecommons.org/licenses/by-nc/3.0/).

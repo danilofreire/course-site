@@ -1,7 +1,7 @@
 ---
 title: "Text analysis: classification and topic modeling"
-date: 2019-12-05T12:30:00
-publishDate: 2019-06-01T12:30:00
+date: 2020-06-03T13:30:00-06:00
+publishDate: 2019-06-01T13:30:00-06:00
 draft: false
 type: "talk"
 
@@ -9,7 +9,7 @@ aliases: ["/cm018.html"]
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-time_end: 2019-12-05T13:50:00
+time_end: 2020-06-03T14:50:00-06:00
 all_day: false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
@@ -20,7 +20,7 @@ abstract: ""
 summary: "Implement unsupervised and supervised learning methods for text data."
 
 # Location of event.
-location: "Room 104, Stuart Hall, Chicago, IL"
+location: "Online"
 
 # Is this a selected talk? (true/false)
 selected: false
@@ -49,7 +49,7 @@ math: false
 * Explain Latent Dirichlet allocation and how this process works
 * Demonstrate how to use LDA to recover topic structure from a known set of topics
 * Demonstrate how to use LDA to recover topic structure from an unknown set of topics
-* Identify methods for selecting the appropriate parameter for `\(k\)`
+* Identify methods for selecting the appropriate parameter for $k$
 
 ## Before class
 

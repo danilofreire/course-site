@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>Data wrangling: tidy data</title>
     <meta charset="utf-8" />
@@ -36,7 +36,7 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# ``vroom::vroom()`
+# `vroom::vroom()`
 
 * Fast, efficient function for importing plain-text files
 * Lazy loading
@@ -45,7 +45,7 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# ``vroom::vroom()`
+# `vroom::vroom()`
 
 
 
@@ -197,7 +197,8 @@ read_excel(path = xlsx_example, sheet = "chickwts")
 library(haven)
 
 read_sas(data_file = system.file("examples", "iris.sas7bdat",
-                                 package = "haven"))
+  package = "haven"
+))
 ```
 
 ```
@@ -226,7 +227,8 @@ read_sas(data_file = system.file("examples", "iris.sas7bdat",
 
 ```r
 read_sav(file = system.file("examples", "iris.sav",
-                            package = "haven"))
+  package = "haven"
+))
 ```
 
 ```
@@ -255,7 +257,8 @@ read_sav(file = system.file("examples", "iris.sav",
 
 ```r
 read_dta(file = system.file("examples", "iris.dta",
-                            package = "haven"))
+  package = "haven"
+))
 ```
 
 ```
@@ -287,14 +290,15 @@ class: center
 
 # Common tidying tasks
 
-* Gathering
-* Spreading
+* Pivoting
+    * Longer
+    * Wider
 * Separating
 * Uniting
 
 ---
 
-# Gathering
+# Pivot longer
 
 .pull-left[
 
@@ -320,9 +324,12 @@ table4a
 
 
 ```r
-table4a %&gt;% 
-  gather(key = year, value = cases,
-         `1999`, `2000`)
+table4a %&gt;%
+  pivot_longer(
+    cols = c(`1999`, `2000`),
+    names_to = "year",
+    values_to = "cases"
+  )
 ```
 
 ```
@@ -330,10 +337,10 @@ table4a %&gt;%
 ##   country     year   cases
 ##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;
 ## 1 Afghanistan 1999     745
-## 2 Brazil      1999   37737
-## 3 China       1999  212258
-## 4 Afghanistan 2000    2666
-## 5 Brazil      2000   80488
+## 2 Afghanistan 2000    2666
+## 3 Brazil      1999   37737
+## 4 Brazil      2000   80488
+## 5 China       1999  212258
 ## 6 China       2000  213766
 ```
 
@@ -341,7 +348,7 @@ table4a %&gt;%
 
 ---
 
-# Spreading
+# Pivot wider
 
 .pull-left[
 
@@ -377,7 +384,10 @@ table2
 
 ```r
 table2 %&gt;%
-  spread(key = type, value = count)
+  pivot_wider(
+    names_from = type,
+    values_from = count
+  )
 ```
 
 ```
@@ -425,10 +435,14 @@ table3
 
 
 ```r
-table3 %&gt;% 
-  separate(col = rate,
-           into = c("cases",
-                    "population"))
+table3 %&gt;%
+  separate(
+    col = rate,
+    into = c(
+      "cases",
+      "population"
+    )
+  )
 ```
 
 ```
@@ -476,7 +490,7 @@ table5
 
 
 ```r
-table5 %&gt;% 
+table5 %&gt;%
   unite(new, century, year)
 ```
 
@@ -524,7 +538,7 @@ table5
 
 ```r
 # remove underscore
-table5 %&gt;% 
+table5 %&gt;%
   unite(new, century, year, sep = "")
 ```
 
@@ -545,6 +559,7 @@ table5 %&gt;%
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script src="https://cfss.uchicago.edu/slides/macros.js"></script>
+<script src="https://platform.twitter.com/widgets.js"></script>
 <script>var slideshow = remark.create({
 "highlightLanguage": "r",
 "highlightStyle": "github",
@@ -589,9 +604,35 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     deleted = true;
   });
-})();</script>
-
-<script>
+})();
+(function() {
+  "use strict"
+  /* Replace <script> tags in slides area to make them executable
+   *
+   * Runs after post-processing of markdown source into slides and replaces only
+   * <script>s on the last slide of continued slides using the .has-continuation
+   * class added by xaringan. Finally, any <script>s in the slides area that
+   * aren't executed are commented out.
+   */
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container:not(.has-continuation) script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+  var scriptsNotExecuted = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container.has-continuation script'
+  );
+  if (!scriptsNotExecuted.length) return;
+  for (var i = 0; i < scriptsNotExecuted.length; i++) {
+    var comment = document.createComment(scriptsNotExecuted[i].outerHTML)
+    scriptsNotExecuted[i].parentElement.replaceChild(comment, scriptsNotExecuted[i])
+  }
+})();
 (function() {
   var links = document.getElementsByTagName('a');
   for (var i = 0; i < links.length; i++) {
@@ -600,7 +641,23 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
   }
 })();
-</script>
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
 
 <script>
 slideshow._releaseMath = function(el) {

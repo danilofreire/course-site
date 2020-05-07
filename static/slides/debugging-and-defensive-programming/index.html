@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>Debugging and defensive programming</title>
     <meta charset="utf-8" />
@@ -22,13 +22,18 @@ class: center, middle, inverse, title-slide
 
 # Bugs
 
-![Not the kind of bugs we're looking for](/img/bugs.jpg)
+.center[
+
+![Admiral Grace Hopper discovered the first bug in a computer](/img/grace-hopper.jpg)
+
+]
 
 ---
 
 # Bugs
 
-* "An error, flaw, failure or fault in a computer program or system that causes it to produce an incorrect or unexpected result, or to behave in unintended ways."
+&gt; An error, flaw, failure or fault in a computer program or system that causes it to produce an incorrect or unexpected result, or to behave in unintended ways.
+
 * Computers are powerful tools that are incredibly stupid
 * Debugging has two goals:
     * Fix bugs once they occur
@@ -70,21 +75,9 @@ And I want to say something to the school children of America who were watching 
 
 The crew of the space shuttle Challenger honoured us by the manner in which they lived their lives. We will never forget them, nor the last time we saw them, this morning, as they prepared for the journey and waved goodbye and 'slipped the surly bonds of earth' to 'touch the face of God.'
 
----
+--
 
-# File names
-
-```r
-# Good
-fit-models.R
-utility-functions.R
-gun-deaths.Rmd
-
-# Bad
-foo.r
-stuff.r
-gun deaths.rmd
-```
+* [Reagan's address](https://youtu.be/Qa7icmqgsow)
 
 ---
 
@@ -132,54 +125,6 @@ mean(x)
 [1] 55
 ```
 
-
----
-
-# Spacing
-
-```r
-# Good
-average &lt;- mean(feet / 12 + inches, na.rm = TRUE)
-
-# Bad
-average&lt;-mean(feet/12+inches,na.rm=TRUE)
-```
-
----
-
-# Curly braces
-
-```r
-# Good
-
-if (y &lt; 0 &amp;&amp; debug) {
-  message("Y is negative")
-}
-
-if (y == 0) {
-  log(x)
-} else {
-  y ^ x
-}
-
-# Bad
-
-if (y &lt; 0 &amp;&amp; debug)
-message("Y is negative")
-
-if (y == 0) {
-log(x)
-} else { y ^ x }
-```
-
----
-
-# Curly braces
-
-```r
-if (y &lt; 0 &amp;&amp; debug) message("Y is negative")
-```
-
 ---
 
 # Line length
@@ -225,17 +170,6 @@ scdbv &lt;- scdbv %&gt;%
 
 ---
 
-# Assignment
-
-```r
-# Good
-x &lt;- 5
-# Bad
-x = 5
-```
-
----
-
 # Calling functions
 
 ```r
@@ -275,18 +209,6 @@ maps::map()     # use map() from the maps library
 
 ---
 
-# Comments
-
-```r
-# Section One ---------------------------------
- 
-# Section Two =================================
- 
-### Section Three #############################
-```
-
----
-
 # Auto-formatting in RStudio
 
 * **Code &gt; Reformat Code** (Shift + Cmd/Ctrl + A)
@@ -295,9 +217,19 @@ maps::map()     # use map() from the maps library
 
 ---
 
-# Exercise: style this code
+# Demonstration: styling code with `styler`
 
-![](https://cdn-mf0.heartyhosting.com/sites/mensfitness.com/files/_main_yoga.jpg)
+* [This code example](/notes/style-guide/#exercise-style-this-code)
+
+---
+
+# Function documentation
+
+* [How to read an R help file](http://socviz.co/appendix.html#how-to-read-an-r-help-page)
+
+--
+
+* What does `var()` do?
 
 ---
 
@@ -364,7 +296,7 @@ logit(-1)
 
 ```r
 logit &lt;- function(x){
-  x &lt;- ifelse(x &lt; 0 | x &gt; 1, NA, x)
+  x &lt;- if_else(x &lt; 0 | x &gt; 1, NA_real_, x)
   if (is.na(x)) warning('x not between 0 and 1')
   log(x / (1 - x))
 }
@@ -434,7 +366,16 @@ suppressMessages(demo_print())  # still output
 
 # Exercise: build a function with conditions
 
-![](https://images.agoramedia.com/everydayhealth/gcms/Yoga-Poses-to-Help-Ankylosing-Spondylitis-09-RM-722x406.jpg)
+&lt;div style="width:100%;height:0;padding-bottom:63%;position:relative;"&gt;&lt;iframe src="https://giphy.com/embed/VFDeGtRSHswfe" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+
+---
+
+# Debugging techniques
+
+1. Realize that you have a bug
+1. Make it repeatable
+1. Figure out where it is
+1. Fix it and test it
 
 ---
 
@@ -568,90 +509,14 @@ str(y)
 
 ---
 
-# Extract the values of `x` where `y` is an error
-
-
-```r
-y$error
-## [[1]]
-## &lt;simpleError in .Primitive("sqrt")(x): non-numeric argument to mathematical function&gt;
-## 
-## [[2]]
-## NULL
-## 
-## [[3]]
-## NULL
-
-(is_ok &lt;- y$error %&gt;%
-    map_lgl(is_null))
-## [1] FALSE  TRUE  TRUE
-
-x[!is_ok]
-## [[1]]
-## [1] "a"
-```
-
----
-
-# Extract the values of `y` that are ok
-
-
-```r
-y$result[is_ok] %&gt;%
-  flatten_dbl()
-```
-
-```
-## [1] 2.000000 2.236068
-```
-
----
-
-# `possibly()`
-
-
-```r
-map_dbl(x, possibly(sqrt, NA))
-```
-
-```
-## [1]       NA 2.000000 2.236068
-```
-
----
-
-# `quietly()`
-
-
-```r
-x &lt;- list(1, -1)
-map(x, quietly(sqrt)) %&gt;%
-  str()
-```
-
-```
-## List of 2
-##  $ :List of 4
-##   ..$ result  : num 1
-##   ..$ output  : chr ""
-##   ..$ warnings: chr(0) 
-##   ..$ messages: chr(0) 
-##  $ :List of 4
-##   ..$ result  : num NaN
-##   ..$ output  : chr ""
-##   ..$ warnings: chr "NaNs produced"
-##   ..$ messages: chr(0)
-```
-
----
-
 # Exercise: handle conditions using `safely()`
 
-![](https://blog.fabletics.com/wp-content/uploads/2018/07/Warrior-3-980x653.jpg)
+&lt;div style="width:100%;height:0;padding-bottom:100%;position:relative;"&gt;&lt;iframe src="https://giphy.com/embed/3o85xunRezGKPOkcG4" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;&lt;/div&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script src="https://cfss.uchicago.edu/slides/macros.js"></script>
+<script src="https://platform.twitter.com/widgets.js"></script>
 <script>var slideshow = remark.create({
 "highlightLanguage": "r",
 "highlightStyle": "github",
@@ -696,9 +561,35 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     deleted = true;
   });
-})();</script>
-
-<script>
+})();
+(function() {
+  "use strict"
+  /* Replace <script> tags in slides area to make them executable
+   *
+   * Runs after post-processing of markdown source into slides and replaces only
+   * <script>s on the last slide of continued slides using the .has-continuation
+   * class added by xaringan. Finally, any <script>s in the slides area that
+   * aren't executed are commented out.
+   */
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container:not(.has-continuation) script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+  var scriptsNotExecuted = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container.has-continuation script'
+  );
+  if (!scriptsNotExecuted.length) return;
+  for (var i = 0; i < scriptsNotExecuted.length; i++) {
+    var comment = document.createComment(scriptsNotExecuted[i].outerHTML)
+    scriptsNotExecuted[i].parentElement.replaceChild(comment, scriptsNotExecuted[i])
+  }
+})();
 (function() {
   var links = document.getElementsByTagName('a');
   for (var i = 0; i < links.length; i++) {
@@ -707,7 +598,23 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
   }
 })();
-</script>
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
 
 <script>
 slideshow._releaseMath = function(el) {

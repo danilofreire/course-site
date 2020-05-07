@@ -1,15 +1,15 @@
 ---
 title: "Geospatial visualization: raster maps"
-date: 2019-11-26T12:30:00
-publishDate: 2019-05-20T13:30:00
-draft: false
+date: 2020-05-27T13:30:00-06:00
+publishDate: 2019-05-20T13:30:00-06:00
+draft: true
 type: "talk"
 
 aliases: ["/cm014.html", "/syllabus/geospatial-visualization/"]
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-time_end: 2019-11-26T13:50:00
+time_end: 2020-05-27T14:50:00-06:00
 all_day: false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
@@ -20,7 +20,7 @@ abstract: ""
 summary: "Identify components of geospatial visualizations and implement raster maps using ggplot2."
 
 # Location of event.
-location: "Room 104, Stuart Hall, Chicago, IL"
+location: "Online"
 
 # Is this a selected talk? (true/false)
 selected: false
@@ -62,6 +62,6 @@ math: false
 
 * [Learn Spatial Analysis](https://spatialanalysis.github.io/) - tutorials and workshops conducted by the Center for Spatial Data Science at the University of Chicago. Lots of materials developed using R.
 
-## What you need to do
+## What you need to do after class
 
 * [Obtain an API key](https://api.census.gov/data/key_signup.html) and [store it securely](/notes/application-program-interface/#census-data-with-tidycensus) on your computer. We will be using `tidycensus` next class, so you will save time if you set this up in advance.

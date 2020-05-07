@@ -1,7 +1,7 @@
 ---
 title: "A deep dive into R Markdown"
-date: 2019-10-31T12:30:00
-publishDate: 2019-03-01T13:30:00
+date: 2020-05-06T13:30:00-06:00
+publishDate: 2019-03-01T13:30:00-06:00
 draft: false
 type: "talk"
 
@@ -9,7 +9,7 @@ aliases: ["/cm010.html"]
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-time_end: 2019-10-31T10:50:00
+time_end: 2020-05-06T10:50:00-06:00
 all_day: false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
@@ -20,7 +20,7 @@ abstract: ""
 summary: "All things related to R Markdown and the `knitr` package."
 
 # Location of event.
-location: "Room 104, Stuart Hall, Chicago, IL"
+location: "Online"
 
 # Is this a selected talk? (true/false)
 selected: false
@@ -59,6 +59,5 @@ math: false
 
 * [A dive into R Markdown](/notes/r-markdown/)
 
-## What you need to do
+## What you need to do after class
 
-* Install the `titanic` package using the command `install.packages("titanic")`. We will be using this package in-class next time

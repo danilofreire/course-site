@@ -8,18 +8,18 @@ type: post
 aliases: ["/hw05-reproducible-research.html"]
 
 summary: "Synthesize everything we have learned thus far."
-url_code: "https://github.com/cfss-fa19/hw06"
+url_code: "https://github.com/cfss-sp20/hw06"
 ---
 
 
 
 # Overview
 
-Due before class November 12th.
+Due by 11:59pm CT (Chicago) on May 18th.
 
 # Fork the `hw06` repository
 
-Go [here](https://github.com/cfss-fa19/hw06) to fork the repo for homework 06.
+Go [here](https://github.com/cfss-sp20/hw06) to fork the repo for homework 06.
 
 # What is my objective?
 
@@ -115,13 +115,13 @@ In your reflection, make special note of any significant problems that required 
 
 # Rubric
 
-Check minus: Cannot reproduce your results. Scripts require interactive coding to fix. Markdown documents are not generated. Graphs and tables don't have appropriate labels or formatting. There is no consistency to your code's style.
+Needs work: Cannot reproduce your results. Scripts require interactive coding to fix. Markdown documents are not generated. Graphs and tables don't have appropriate labels or formatting. There is no consistency to your code's style.
 
-Check: Solid effort. Hits all the elements. No clear mistakes. Easy to follow (both the code and the output). Nothing spectacular, either bad or good.
+Satisfactory: Solid effort. Hits all the elements. No clear mistakes. Easy to follow (both the code and the output). Nothing spectacular, either bad or good.
 
-Check plus: Repository contains a detailed `README.md` explaining how the files in the repo should be executed. Displays innovative data analysis or coding skills. Graphs and tables are well labeled. Excellent implementation of a consistent style guide. Analysis is insightful. I walk away feeling I learned something.
+Excellent: Repository contains a detailed `README.md` explaining how the files in the repo should be executed. Displays innovative data analysis or coding skills. Graphs and tables are well labeled. Excellent implementation of a consistent style guide. Analysis is insightful. I walk away feeling I learned something.
 
-### Acknowledgments
+## Acknowledgments
 
 
 * This page is derived in part from ["UBC STAT 545A and 547M"](http://stat545.com), licensed under the [CC BY-NC 3.0 Creative Commons License](https://creativecommons.org/licenses/by-nc/3.0/).

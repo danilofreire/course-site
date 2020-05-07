@@ -1,7 +1,7 @@
 ---
 title: "Pipes and functions in R"
-date: 2019-10-22T12:30:00
-publishDate: 2019-04-22T13:30:00
+date: 2020-04-27T13:30:00-06:00
+publishDate: 2019-04-22T13:30:00-06:00
 draft: false
 type: "talk"
 
@@ -9,7 +9,7 @@ aliases: ["/cm007.html"]
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-time_end: 2019-10-22T13:50:00
+time_end: 2020-04-27T14:50:00-06:00
 all_day: false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
@@ -20,7 +20,7 @@ abstract: ""
 summary: "Review the pipe, define a function, and practice writing and debugging functions."
 
 # Location of event.
-location: "Room 104, Stuart Hall, Chicago, IL"
+location: "Online"
 
 # Is this a selected talk? (true/false)
 selected: false
@@ -34,6 +34,7 @@ url_pdf: ""
 url_slides: "/slides/pipes-and-functions-in-r/"
 url_video: ""
 url_code: ""
+url_notes: "https://hackmd.io/@cfss-sp20/pipes-and-functions-in-r"
 
 # Does the content use math formatting?
 math: false
@@ -59,4 +60,4 @@ math: false
 * [Pipes in R](/notes/pipes/)
 * [Functions in R](/notes/functions/)
 
-## What you need to do
+## What you need to do after class

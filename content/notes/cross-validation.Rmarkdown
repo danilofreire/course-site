@@ -11,7 +11,7 @@ categories: ["stat-learn"]
 menu:
   notes:
     parent: Statistical learning
-    weight: 5
+    weight: 6
 ---
 
 ```{r setup, include = FALSE}
@@ -107,7 +107,11 @@ For the training set, this would look like:
   mean(.resid2))
 ```
 
-> Note the special use of the [`$%$` pipe operator from the `magrittr` package](http://r4ds.had.co.nz/pipes.html#other-tools-from-magrittr). This allows us to directly access columns from the data frame entering the pipe. This is especially useful for integrating non-tidy functions into a tidy operation.
+{{% alert note %}}
+
+Note the special use of the [`$%$` pipe operator from the `magrittr` package](http://r4ds.had.co.nz/pipes.html#other-tools-from-magrittr). This allows us to directly access columns from the data frame entering the pipe. This is especially useful for integrating non-tidy functions into a tidy operation.
+
+{{% /alert %}}
 
 For the validation set:
 
@@ -208,7 +212,7 @@ summary(survive_age_woman_x)
 
 We can use the same validation set approach to evaluate the model's accuracy. For classification models, instead of using MSE we examine the **test error rate**. That is, of all the predictions generated for the validation set, what percentage of predictions are incorrect? The goal is to minimize this value as much as possible (ideally, until we make no errors and our error rate is $0%$).
 
-```{r accuracy_age_gender_x_test_set, dependson="age_woman_cross", message = FALSE}
+```{r accuracy_age_sex_x_test_set, dependson="age_woman_cross", message = FALSE}
 # split the data into training and validation sets
 titanic_split <- initial_split(data = titanic, prop = 0.5)
 

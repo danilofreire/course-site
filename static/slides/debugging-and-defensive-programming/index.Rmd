@@ -18,13 +18,18 @@ theme_set(theme_minimal(base_size = rcfss::base_size))
 
 # Bugs
 
-![Not the kind of bugs we're looking for](/img/bugs.jpg)
+.center[
+
+![Admiral Grace Hopper discovered the first bug in a computer](/img/grace-hopper.jpg)
+
+]
 
 ---
 
 # Bugs
 
-* "An error, flaw, failure or fault in a computer program or system that causes it to produce an incorrect or unexpected result, or to behave in unintended ways."
+> An error, flaw, failure or fault in a computer program or system that causes it to produce an incorrect or unexpected result, or to behave in unintended ways.
+
 * Computers are powerful tools that are incredibly stupid
 * Debugging has two goals:
     * Fix bugs once they occur
@@ -66,21 +71,9 @@ And I want to say something to the school children of America who were watching 
 
 The crew of the space shuttle Challenger honoured us by the manner in which they lived their lives. We will never forget them, nor the last time we saw them, this morning, as they prepared for the journey and waved goodbye and 'slipped the surly bonds of earth' to 'touch the face of God.'
 
----
+--
 
-# File names
-
-```r
-# Good
-fit-models.R
-utility-functions.R
-gun-deaths.Rmd
-
-# Bad
-foo.r
-stuff.r
-gun deaths.rmd
-```
+* [Reagan's address](https://youtu.be/Qa7icmqgsow)
 
 ---
 
@@ -121,54 +114,6 @@ mean(x)
 
 ```
 [1] 55
-```
-
-
----
-
-# Spacing
-
-```r
-# Good
-average <- mean(feet / 12 + inches, na.rm = TRUE)
-
-# Bad
-average<-mean(feet/12+inches,na.rm=TRUE)
-```
-
----
-
-# Curly braces
-
-```r
-# Good
-
-if (y < 0 && debug) {
-  message("Y is negative")
-}
-
-if (y == 0) {
-  log(x)
-} else {
-  y ^ x
-}
-
-# Bad
-
-if (y < 0 && debug)
-message("Y is negative")
-
-if (y == 0) {
-log(x)
-} else { y ^ x }
-```
-
----
-
-# Curly braces
-
-```r
-if (y < 0 && debug) message("Y is negative")
 ```
 
 ---
@@ -216,17 +161,6 @@ scdbv <- scdbv %>%
 
 ---
 
-# Assignment
-
-```r
-# Good
-x <- 5
-# Bad
-x = 5
-```
-
----
-
 # Calling functions
 
 ```r
@@ -266,18 +200,6 @@ maps::map()     # use map() from the maps library
 
 ---
 
-# Comments
-
-```r
-# Section One ---------------------------------
- 
-# Section Two =================================
- 
-### Section Three #############################
-```
-
----
-
 # Auto-formatting in RStudio
 
 * **Code > Reformat Code** (Shift + Cmd/Ctrl + A)
@@ -286,9 +208,19 @@ maps::map()     # use map() from the maps library
 
 ---
 
-# Exercise: style this code
+# Demonstration: styling code with `styler`
 
-![](https://cdn-mf0.heartyhosting.com/sites/mensfitness.com/files/_main_yoga.jpg)
+* [This code example](/notes/style-guide/#exercise-style-this-code)
+
+---
+
+# Function documentation
+
+* [How to read an R help file](http://socviz.co/appendix.html#how-to-read-an-r-help-page)
+
+--
+
+* What does `var()` do?
 
 ---
 
@@ -335,7 +267,7 @@ logit(-1)
 
 ```{r logit_warning}
 logit <- function(x){
-  x <- ifelse(x < 0 | x > 1, NA, x)
+  x <- if_else(x < 0 | x > 1, NA_real_, x)
   if (is.na(x)) warning('x not between 0 and 1')
   log(x / (1 - x))
 }
@@ -371,7 +303,16 @@ suppressMessages(demo_print())  # still output
 
 # Exercise: build a function with conditions
 
-![](https://images.agoramedia.com/everydayhealth/gcms/Yoga-Poses-to-Help-Ankylosing-Spondylitis-09-RM-722x406.jpg)
+<div style="width:100%;height:0;padding-bottom:63%;position:relative;"><iframe src="https://giphy.com/embed/VFDeGtRSHswfe" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+
+---
+
+# Debugging techniques
+
+1. Realize that you have a bug
+1. Make it repeatable
+1. Figure out where it is
+1. Fix it and test it
 
 ---
 
@@ -449,46 +390,6 @@ str(y)
 
 ---
 
-# Extract the values of `x` where `y` is an error
-
-```{r error_x, collapse = TRUE}
-y$error
-
-(is_ok <- y$error %>%
-    map_lgl(is_null))
-
-x[!is_ok]
-```
-
----
-
-# Extract the values of `y` that are ok
-
-```{r okay_y}
-y$result[is_ok] %>%
-  flatten_dbl()
-```
-
----
-
-# `possibly()`
-
-```{r possibly}
-map_dbl(x, possibly(sqrt, NA))
-```
-
----
-
-# `quietly()`
-
-```{r quietly}
-x <- list(1, -1)
-map(x, quietly(sqrt)) %>%
-  str()
-```
-
----
-
 # Exercise: handle conditions using `safely()`
 
-![](https://blog.fabletics.com/wp-content/uploads/2018/07/Warrior-3-980x653.jpg)
+<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/3o85xunRezGKPOkcG4" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>

@@ -6,10 +6,12 @@ output: rcfss::xaringan
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-knitr::opts_chunk$set(cache = TRUE,
-                      message = FALSE,
-                      warning = FALSE,
-                      fig.retina = 2, fig.width = 12)
+knitr::opts_chunk$set(
+  cache = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.retina = 2, fig.width = 12
+)
 
 library(tidyverse)
 library(nycflights13)
@@ -35,9 +37,13 @@ results_small <- microbenchmark(
 ```{r compare-speed-small-plot, dependson = "compare-speed-small", message = FALSE, echo = FALSE}
 autoplot(results_small) +
   scale_y_log10() +
-  labs(title = str_c("Number of observations:",
-                     nrow(read_csv(here("static", "data", "sim-data-small.csv"))), sep = " "),
-       y = "Time [milliseconds], logged")
+  labs(
+    title = str_c("Number of observations:",
+      nrow(read_csv(here("static", "data", "sim-data-small.csv"))),
+      sep = " "
+    ),
+    y = "Time [milliseconds], logged"
+  )
 ```
 
 ---
@@ -54,14 +60,18 @@ results_large <- microbenchmark(
 ```{r compare-speed-large-plot, dependson = "compare-speed-large", message = FALSE, echo = FALSE}
 autoplot(results_large) +
   scale_y_log10() +
-  labs(title = str_c("Number of observations:",
-                     nrow(read_csv(here("static", "data", "sim-data-large.csv"))), sep = " "),
-       y = "Time [milliseconds], logged")
+  labs(
+    title = str_c("Number of observations:",
+      nrow(read_csv(here("static", "data", "sim-data-large.csv"))),
+      sep = " "
+    ),
+    y = "Time [milliseconds], logged"
+  )
 ```
 
 ---
 
-# ``vroom::vroom()`
+# `vroom::vroom()`
 
 * Fast, efficient function for importing plain-text files
 * Lazy loading
@@ -70,7 +80,7 @@ autoplot(results_large) +
 
 ---
 
-# ``vroom::vroom()`
+# `vroom::vroom()`
 
 ```{r vroom-compare-speed-large, dependson = "data-gen", message = FALSE, echo = FALSE}
 results_vroom <- microbenchmark(
@@ -101,7 +111,7 @@ autoplot(object = results_vroom) +
 
 ```{r challenge, echo = FALSE}
 challenge <- read_csv(
-  readr_example("challenge.csv"), 
+  readr_example("challenge.csv"),
   col_types = cols(
     x = col_double(),
     y = col_date()
@@ -141,7 +151,7 @@ file.info(here("static", "data", "challenge.csv"))$size %>%
 # compare read speeds
 microbenchmark(
   read_csv = read_csv(
-    readr_example("challenge.csv"), 
+    readr_example("challenge.csv"),
     col_types = cols(
       x = col_double(),
       y = col_date()
@@ -149,7 +159,7 @@ microbenchmark(
   ),
   read_rds = read_rds(here("static", "data", "challenge.rds"))
 ) %>%
-  autoplot +
+  autoplot() +
   labs(y = "Time [microseconds], logged")
 ```
 
@@ -158,25 +168,25 @@ microbenchmark(
 # `feather`
 
 ```{r feather, dependson = "challenge", include = FALSE}
-library(feather)
+library(arrow)
 
-write_feather(challenge, here("static", "data", "challenge.feather"))
-read_feather(here("static", "data", "challenge.feather"))
+write_feather(x = challenge, sink = here("static", "data", "challenge.feather"))
+read_feather(file = here("static", "data", "challenge.feather"))
 ```
 
 ```{r feather-2, dependson = "challenge", message = FALSE, echo = FALSE}
 microbenchmark(
   read_csv = read_csv(
-    readr_example("challenge.csv"), 
+    readr_example("challenge.csv"),
     col_types = cols(
       x = col_double(),
       y = col_date()
     )
   ),
   read_rds = read_rds(here("static", "data", "challenge.rds")),
-  read_feather = read_feather(here("static", "data", "challenge.feather"))
+  read_feather = read_feather(file = here("static", "data", "challenge.feather"))
 ) %>%
-  autoplot +
+  autoplot() +
   scale_y_log10(labels = scales::comma) +
   labs(y = "Time [microseconds], logged")
 ```
@@ -214,7 +224,8 @@ read_excel(path = xlsx_example, sheet = "chickwts")
 library(haven)
 
 read_sas(data_file = system.file("examples", "iris.sas7bdat",
-                                 package = "haven"))
+  package = "haven"
+))
 ```
 
 ---
@@ -225,7 +236,8 @@ read_sas(data_file = system.file("examples", "iris.sas7bdat",
 
 ```{r haven-spss}
 read_sav(file = system.file("examples", "iris.sav",
-                            package = "haven"))
+  package = "haven"
+))
 ```
 
 ---
@@ -236,7 +248,8 @@ read_sav(file = system.file("examples", "iris.sav",
 
 ```{r haven-stata}
 read_dta(file = system.file("examples", "iris.dta",
-                            package = "haven"))
+  package = "haven"
+))
 ```
 
 ---
@@ -251,14 +264,15 @@ class: center
 
 # Common tidying tasks
 
-* Gathering
-* Spreading
+* Pivoting
+    * Longer
+    * Wider
 * Separating
 * Uniting
 
 ---
 
-# Gathering
+# Pivot longer
 
 .pull-left[
 
@@ -272,17 +286,20 @@ table4a
 
 .pull-right[
 
-```{r gather}
-table4a %>% 
-  gather(key = year, value = cases,
-         `1999`, `2000`)
+```{r pivot-longer}
+table4a %>%
+  pivot_longer(
+    cols = c(`1999`, `2000`),
+    names_to = "year",
+    values_to = "cases"
+  )
 ```
 
 ]
 
 ---
 
-# Spreading
+# Pivot wider
 
 .pull-left[
 
@@ -296,9 +313,12 @@ table2
 
 .pull-right[
 
-```{r spread}
+```{r pivot-wider}
 table2 %>%
-  spread(key = type, value = count)
+  pivot_wider(
+    names_from = type,
+    values_from = count
+  )
 ```
 
 ]
@@ -320,10 +340,14 @@ table3
 .pull-right[
 
 ```{r separate}
-table3 %>% 
-  separate(col = rate,
-           into = c("cases",
-                    "population"))
+table3 %>%
+  separate(
+    col = rate,
+    into = c(
+      "cases",
+      "population"
+    )
+  )
 ```
 
 ]
@@ -345,7 +369,7 @@ table5
 .pull-right[
 
 ```{r unite}
-table5 %>% 
+table5 %>%
   unite(new, century, year)
 ```
 
@@ -366,8 +390,9 @@ table5 %>%
 
 ```{r unite-underscore}
 # remove underscore
-table5 %>% 
+table5 %>%
   unite(new, century, year, sep = "")
 ```
 
 ]
+

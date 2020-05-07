@@ -8,7 +8,7 @@ type: post
 aliases: ["/hw02-explore-data.html"]
 
 summary: "Transform and explore a cleaned dataset on gun deaths in the United States."
-url_code: "https://github.com/cfss-fa19/hw02"
+url_code: "https://github.com/cfss-sp20/hw02"
 ---
 
 ```{r setup, include=FALSE}
@@ -17,13 +17,13 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Overview
 
-Due before class on October 15th.
+Due by 11:59pm CT (Chicago) on April 20th.
 
 Now that you've demonstrated your software is setup, the goal of this assignment is to practice transforming and exploring data.
 
 # Fork the `hw02` repository
 
-Go [here](https://github.com/cfss-fa19/hw02) to fork the repo.
+Go [here](https://github.com/cfss-sp20/hw02) to fork the repo.
 
 # Exploring clean data
 
@@ -88,7 +88,7 @@ count(mass_shootings, location_type)
 
 Instead, use `kable()` to format the table, add a caption, and label the columns:
 
-```{r table-good}
+```{r table-good, format = "asis"}
 count(mass_shootings, location_type) %>%
   kable(caption = "Mass shootings in the United States (1982-2019), by location",
         col.names = c("Location", "Number of incidents"))
@@ -96,18 +96,16 @@ count(mass_shootings, location_type) %>%
 
 Run `?kable` in the console to see how additional options.
 
-> Note that when viewed on GitHub, table captions will not show up. Just a (missing) feature of Markdown on GitHub `r emo::ji("sad")`
-
 # Submit the assignment
 
-Your assignment should be submitted as an R Markdown document. **Don't know what an R Markdown document is? [Read this!](http://rmarkdown.rstudio.com/lesson-1.html) Or [this!](http://r4ds.had.co.nz/r-markdown.html)** I have included starter files for you to modify to complete the assignment, so you are not beginning completely from scratch.
+Your assignment should be submitted as an R Markdown document using the `github_document` format. **Don't know what an R Markdown document is? [Read this!](http://rmarkdown.rstudio.com/lesson-1.html) Or [this!](http://r4ds.had.co.nz/r-markdown.html)** I have included starter files for you to modify to complete the assignment, so you are not beginning completely from scratch.
 
 Follow instructions on [homework workflow](/faq/homework-guidelines/#homework-workflow). As part of the pull request, you're encouraged to reflect on what was hard/easy, problems you solved, helpful tutorials you read, etc.
 
 # Rubric
 
-Check minus: Displays minimal effort. Doesn't complete all components. Code is poorly written and not documented. Uses the same type of plot for each graph, or doesn't use plots appropriate for the variables being analyzed. No record of commits other than the final push to GitHub.
+Needs work: Displays minimal effort. Doesn't complete all components. Code is poorly written and not documented. Uses the same type of plot for each graph, or doesn't use plots appropriate for the variables being analyzed. No record of commits other than the final push to GitHub.
 
-Check: Solid effort. Hits all the elements. No clear mistakes. Easy to follow (both the code and the output). Nothing spectacular, either bad or good.
+Satisfactory: Solid effort. Hits all the elements. No clear mistakes. Easy to follow (both the code and the output). Nothing spectacular, either bad or good.
 
-Check plus: Finished all components of the assignment correctly. Code is well-documented (both self-documented and with additional comments as necessary). Graphs and tables are properly labeled. Uses multiple commits to back up and show a progression in the work. Analysis is clear and easy to follow, either because graphs are labeled clearly or you've written additional text to describe how you interpret the output.
+Excellent: Finished all components of the assignment correctly. Code is well-documented (both self-documented and with additional comments as necessary). Graphs and tables are properly labeled. Uses multiple commits to back up and show a progression in the work. Analysis is clear and easy to follow, either because graphs are labeled clearly or you've written additional text to describe how you interpret the output.

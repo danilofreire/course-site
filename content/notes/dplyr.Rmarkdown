@@ -74,7 +74,11 @@ diamonds_ideal <- filter(.data = diamonds, cut == "Ideal")  # saved, but not pri
 (diamonds_ideal <- filter(.data = diamonds, cut == "Ideal"))  # saved and printed
 ```
 
-> Do not use `=` to assign objects. [Read this for more information on the difference between `<-` and `=`.](http://stackoverflow.com/a/1742550)
+{{% alert note %}}
+
+Do not use `=` to assign objects. [Read this for more information on the difference between `<-` and `=`.](http://stackoverflow.com/a/1742550)
+
+{{% /alert %}}
 
 ## Missing values
 
@@ -192,13 +196,13 @@ Or this:
 
 ```{r pipe-df, error = TRUE}
 delays <- flights %>% 
-  group_by(flights, dest) %>% 
-  summarize(flights,
+  group_by(.data = flights, dest) %>% 
+  summarize(.data = flights,
     count = n(),
     dist = mean(distance, na.rm = TRUE),
     delay = mean(arr_delay, na.rm = TRUE)
   ) %>% 
-  filter(flights, count > 20, dest != "HNL")
+  filter(.data = flights, count > 20, dest != "HNL")
 ```
 
 If you use pipes, you don't have to reference the data frame with each function - just the first time at the beginning of the pipe sequence.

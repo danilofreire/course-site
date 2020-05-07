@@ -1,7 +1,7 @@
 ---
 title: "Data wrangling: tidy data"
-date: 2019-10-15T12:30:00
-publishDate: 2019-04-15T13:30:00
+date: 2020-04-20T13:30:00-06:00
+publishDate: 2019-04-15T13:30:00-06:00
 draft: false
 type: "talk"
 
@@ -9,7 +9,7 @@ aliases: ["/cm005.html"]
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-time_end: 2019-10-15T13:50:00
+time_end: 2020-04-20T14:50:00-06:00
 all_day: false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
@@ -20,7 +20,7 @@ abstract: ""
 summary: "Data frames, importing data files, and tidying data."
 
 # Location of event.
-location: "Room 104, Stuart Hall, Chicago, IL"
+location: "Online"
 
 # Is this a selected talk? (true/false)
 selected: false
@@ -34,6 +34,7 @@ url_pdf: ""
 url_slides: "/slides/data-wrangling-tidy-data/"
 url_video: ""
 url_code: ""
+url_notes: "https://hackmd.io/@cfss-sp20/data-wrangling-tidy-data"
 
 # Does the content use math formatting?
 math: false
@@ -63,3 +64,4 @@ math: false
 
 * Lohr. 2014. [For Big-Data Scientists, "Janitor Work" Is Key Hurdle to Insights.](http://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html?_r=0) *New York Times*.
     * [Data Carpentry](http://www.mimno.org/articles/carpentry/) - a response to the NYTimes article
+* [Pivoting in `tidyr`](https://tidyr.tidyverse.org/articles/pivot.html)

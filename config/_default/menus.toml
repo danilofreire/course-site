@@ -24,13 +24,13 @@
   weight = 4
 
 [[main]]
-  name = "Notes"
-  url = "/notes/"
+  name = "Setup"
+  url = "/setup/"
   weight = 5
 
 [[main]]
-  name = "Contact"
-  url = "#contact"
+  name = "Notes"
+  url = "/notes/"
   weight = 6
 
 # Link to a PDF of your resume/CV from the menu.

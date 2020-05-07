@@ -30,7 +30,7 @@ set.seed(1234)
 
 
 
-One of the main advantages of `readr` functions over base R functions is that [they are typically much faster](http://r4ds.had.co.nz/data-import.html#compared-to-base-r). For example, let's import a randomly generated CSV file with 5,000 rows and `ncol(data_small)` columns. How long does it take `read.csv()` to import this file vs. `readr::read_csv()`? To assess the differences, we use the [`microbenchmark`](https://cran.r-project.org/web/packages/microbenchmark/) to run each function 100 times and compare the distributions of the time it takes to complete the data import:
+One of the main advantages of `readr` functions over base R functions is that [they are typically much faster](http://r4ds.had.co.nz/data-import.html#compared-to-base-r). For example, let's import a randomly generated CSV file with 5,000 rows and 4 columns. How long does it take `read.csv()` to import this file vs. `readr::read_csv()`? To assess the differences, we use the [`microbenchmark`](https://cran.r-project.org/web/packages/microbenchmark/) to run each function 100 times and compare the distributions of the time it takes to complete the data import:
 
 
 ```r
@@ -200,16 +200,16 @@ microbenchmark(
 
 By default, `write_rds()` does not compress the `.rds` file; use the `compress` argument to implement one of several different compression algorithms. `read_rds()` is noticably faster than `read_csv()`, and also has the benefit of [preserving column types](http://r4ds.had.co.nz/data-import.html#writing-to-a-file). The downside is that RDS is only implemented by R; it is not used by any other program so if you need to import/export data files into other languages like Python (or open in Excel), RDS is not a good storage format.
 
-## `feather`
+## `arrow`
 
-The `feather` package implements a binary file format that is cross-compatible with many different programming languages:
+The `arrow` package implements a binary file format called `featehr` that is cross-compatible with many different programming languages:
 
 
 ```r
-library(feather)
+library(arrow)
 
-write_feather(x = challenge, path = here("static", "data", "challenge.feather"))
-read_feather(path = here("static", "data", "challenge.feather"))
+write_feather(x = challenge, sink = here("static", "data", "challenge.feather"))
+read_feather(file = here("static", "data", "challenge.feather"))
 ```
 
 ```
@@ -240,7 +240,7 @@ microbenchmark(
     )
   ),
   read_rds = read_rds(path = here("static", "data", "challenge.rds")),
-  read_feather = read_feather(path = here("static", "data", "challenge.feather"))
+  read_feather = read_feather(file = here("static", "data", "challenge.feather"))
 ) %>%
   autoplot +
   scale_y_continuous(labels = scales::comma) +
@@ -249,7 +249,7 @@ microbenchmark(
 
 <img src="/notes/importing-data_files/figure-html/feather-1.png" width="672" />
 
-`feather` is generally faster than RDS and `read_csv()`.^[Notice that the x-axis is logarithmically scaled.] Furthermore, [it has native support for Python, R, and Julia.](https://github.com/wesm/feather), so if you develop an analytics pipeline that switches between R and Python, you can import/export data files in `.feather` without any loss of information.
+`read_feather()` is generally faster than RDS and `read_csv()`.^[Notice that the x-axis is logarithmically scaled.] Furthermore, [it has native support for Python, R, and Julia.](http://arrow.apache.org/blog/2019/08/08/r-package-on-cran/), so if you develop an analytics pipeline that switches between R and Python, you can import/export data files in `.feather` without any loss of information.
 
 ## `readxl`
 
@@ -419,7 +419,11 @@ write_dta(data = mtcars, path = here("static", "data", "mtcars.dta"))
 
 That said, if you can obtain your data file in a plain `.csv` or `.tsv` file format, **I strongly recommend it**. SAS, SPSS, and Stata files represent labeled data and missing values differently from R. `haven` attempts to bridge the gap and preserve as much information as possible, but I frequently find myself stripping out all the label information and rebuilding it using `dplyr` functions and the codebook for the data file.
 
-> Need to import a SAS, SPSS, or Stata data file? Read [the documentation](http://haven.tidyverse.org/articles/semantics.html) to learn how to best handle value labels and missing values.
+{{% alert note %}}
+
+Need to import a SAS, SPSS, or Stata data file? Read [the documentation](http://haven.tidyverse.org/articles/semantics.html) to learn how to best handle value labels and missing values.
+
+{{% /alert %}}
 
 ## Session Info
 
@@ -430,90 +434,94 @@ devtools::session_info()
 ```
 
 ```
-## ─ Session info ──────────────────────────────────────────────────────────
+## ─ Session info ───────────────────────────────────────────────────────────────
 ##  setting  value                       
-##  version  R version 3.6.0 (2019-04-26)
-##  os       macOS Mojave 10.14.6        
+##  version  R version 3.6.3 (2020-02-29)
+##  os       macOS Catalina 10.15.4      
 ##  system   x86_64, darwin15.6.0        
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/Chicago             
-##  date     2019-09-15                  
+##  date     2020-04-10                  
 ## 
-## ─ Packages ──────────────────────────────────────────────────────────────
-##  package     * version date       lib source        
-##  assertthat    0.2.1   2019-03-21 [1] CRAN (R 3.6.0)
-##  backports     1.1.4   2019-04-10 [1] CRAN (R 3.6.0)
-##  blogdown      0.14    2019-07-13 [1] CRAN (R 3.6.0)
-##  bookdown      0.12    2019-07-11 [1] CRAN (R 3.6.0)
-##  broom         0.5.2   2019-04-07 [1] CRAN (R 3.6.0)
-##  callr         3.3.1   2019-07-18 [1] CRAN (R 3.6.0)
-##  cellranger    1.1.0   2016-07-27 [1] CRAN (R 3.6.0)
-##  cli           1.1.0   2019-03-19 [1] CRAN (R 3.6.0)
-##  colorspace    1.4-1   2019-03-18 [1] CRAN (R 3.6.0)
-##  crayon        1.3.4   2017-09-16 [1] CRAN (R 3.6.0)
-##  desc          1.2.0   2018-05-01 [1] CRAN (R 3.6.0)
-##  devtools      2.1.0   2019-07-06 [1] CRAN (R 3.6.0)
-##  digest        0.6.20  2019-07-04 [1] CRAN (R 3.6.0)
-##  dplyr       * 0.8.3   2019-07-04 [1] CRAN (R 3.6.0)
-##  evaluate      0.14    2019-05-28 [1] CRAN (R 3.6.0)
-##  forcats     * 0.4.0   2019-02-17 [1] CRAN (R 3.6.0)
-##  fs            1.3.1   2019-05-06 [1] CRAN (R 3.6.0)
-##  generics      0.0.2   2018-11-29 [1] CRAN (R 3.6.0)
-##  ggplot2     * 3.2.1   2019-08-10 [1] CRAN (R 3.6.0)
-##  glue          1.3.1   2019-03-12 [1] CRAN (R 3.6.0)
-##  gtable        0.3.0   2019-03-25 [1] CRAN (R 3.6.0)
-##  haven         2.1.1   2019-07-04 [1] CRAN (R 3.6.0)
-##  here        * 0.1     2017-05-28 [1] CRAN (R 3.6.0)
-##  hms           0.5.0   2019-07-09 [1] CRAN (R 3.6.0)
-##  htmltools     0.3.6   2017-04-28 [1] CRAN (R 3.6.0)
-##  httr          1.4.1   2019-08-05 [1] CRAN (R 3.6.0)
-##  jsonlite      1.6     2018-12-07 [1] CRAN (R 3.6.0)
-##  knitr         1.24    2019-08-08 [1] CRAN (R 3.6.0)
-##  lattice       0.20-38 2018-11-04 [1] CRAN (R 3.6.0)
-##  lazyeval      0.2.2   2019-03-15 [1] CRAN (R 3.6.0)
-##  lubridate     1.7.4   2018-04-11 [1] CRAN (R 3.6.0)
-##  magrittr      1.5     2014-11-22 [1] CRAN (R 3.6.0)
-##  memoise       1.1.0   2017-04-21 [1] CRAN (R 3.6.0)
-##  modelr        0.1.5   2019-08-08 [1] CRAN (R 3.6.0)
-##  munsell       0.5.0   2018-06-12 [1] CRAN (R 3.6.0)
-##  nlme          3.1-141 2019-08-01 [1] CRAN (R 3.6.0)
-##  pillar        1.4.2   2019-06-29 [1] CRAN (R 3.6.0)
-##  pkgbuild      1.0.4   2019-08-05 [1] CRAN (R 3.6.0)
-##  pkgconfig     2.0.2   2018-08-16 [1] CRAN (R 3.6.0)
-##  pkgload       1.0.2   2018-10-29 [1] CRAN (R 3.6.0)
-##  prettyunits   1.0.2   2015-07-13 [1] CRAN (R 3.6.0)
-##  processx      3.4.1   2019-07-18 [1] CRAN (R 3.6.0)
-##  ps            1.3.0   2018-12-21 [1] CRAN (R 3.6.0)
-##  purrr       * 0.3.2   2019-03-15 [1] CRAN (R 3.6.0)
-##  R6            2.4.0   2019-02-14 [1] CRAN (R 3.6.0)
-##  Rcpp          1.0.2   2019-07-25 [1] CRAN (R 3.6.0)
-##  readr       * 1.3.1   2018-12-21 [1] CRAN (R 3.6.0)
-##  readxl        1.3.1   2019-03-13 [1] CRAN (R 3.6.0)
-##  remotes       2.1.0   2019-06-24 [1] CRAN (R 3.6.0)
-##  rlang         0.4.0   2019-06-25 [1] CRAN (R 3.6.0)
-##  rmarkdown     1.14    2019-07-12 [1] CRAN (R 3.6.0)
-##  rprojroot     1.3-2   2018-01-03 [1] CRAN (R 3.6.0)
-##  rstudioapi    0.10    2019-03-19 [1] CRAN (R 3.6.0)
-##  rvest         0.3.4   2019-05-15 [1] CRAN (R 3.6.0)
-##  scales        1.0.0   2018-08-09 [1] CRAN (R 3.6.0)
-##  sessioninfo   1.1.1   2018-11-05 [1] CRAN (R 3.6.0)
-##  stringi       1.4.3   2019-03-12 [1] CRAN (R 3.6.0)
-##  stringr     * 1.4.0   2019-02-10 [1] CRAN (R 3.6.0)
-##  testthat      2.2.1   2019-07-25 [1] CRAN (R 3.6.0)
-##  tibble      * 2.1.3   2019-06-06 [1] CRAN (R 3.6.0)
-##  tidyr       * 0.8.3   2019-03-01 [1] CRAN (R 3.6.0)
-##  tidyselect    0.2.5   2018-10-11 [1] CRAN (R 3.6.0)
-##  tidyverse   * 1.2.1   2017-11-14 [1] CRAN (R 3.6.0)
-##  usethis       1.5.1   2019-07-04 [1] CRAN (R 3.6.0)
-##  vctrs         0.2.0   2019-07-05 [1] CRAN (R 3.6.0)
-##  withr         2.1.2   2018-03-15 [1] CRAN (R 3.6.0)
-##  xfun          0.8     2019-06-25 [1] CRAN (R 3.6.0)
-##  xml2          1.2.2   2019-08-09 [1] CRAN (R 3.6.0)
-##  yaml          2.2.0   2018-07-25 [1] CRAN (R 3.6.0)
-##  zeallot       0.1.0   2018-01-28 [1] CRAN (R 3.6.0)
+## ─ Packages ───────────────────────────────────────────────────────────────────
+##  package     * version     date       lib source                      
+##  assertthat    0.2.1       2019-03-21 [1] CRAN (R 3.6.0)              
+##  backports     1.1.5       2019-10-02 [1] CRAN (R 3.6.0)              
+##  blogdown      0.18        2020-03-04 [1] CRAN (R 3.6.0)              
+##  bookdown      0.18        2020-03-05 [1] CRAN (R 3.6.0)              
+##  broom         0.5.5       2020-02-29 [1] CRAN (R 3.6.0)              
+##  callr         3.4.2       2020-02-12 [1] CRAN (R 3.6.1)              
+##  cellranger    1.1.0       2016-07-27 [1] CRAN (R 3.6.0)              
+##  cli           2.0.2       2020-02-28 [1] CRAN (R 3.6.0)              
+##  colorspace    1.4-1       2019-03-18 [1] CRAN (R 3.6.0)              
+##  crayon        1.3.4       2017-09-16 [1] CRAN (R 3.6.0)              
+##  DBI           1.1.0       2019-12-15 [1] CRAN (R 3.6.0)              
+##  dbplyr        1.4.2       2019-06-17 [1] CRAN (R 3.6.0)              
+##  desc          1.2.0       2018-05-01 [1] CRAN (R 3.6.0)              
+##  devtools      2.2.2       2020-02-17 [1] CRAN (R 3.6.0)              
+##  digest        0.6.25      2020-02-23 [1] CRAN (R 3.6.0)              
+##  dplyr       * 0.8.5       2020-03-07 [1] CRAN (R 3.6.0)              
+##  ellipsis      0.3.0       2019-09-20 [1] CRAN (R 3.6.0)              
+##  evaluate      0.14        2019-05-28 [1] CRAN (R 3.6.0)              
+##  fansi         0.4.1       2020-01-08 [1] CRAN (R 3.6.0)              
+##  forcats     * 0.5.0       2020-03-01 [1] CRAN (R 3.6.0)              
+##  fs            1.3.2       2020-03-05 [1] CRAN (R 3.6.0)              
+##  generics      0.0.2       2018-11-29 [1] CRAN (R 3.6.0)              
+##  ggplot2     * 3.3.0       2020-03-05 [1] CRAN (R 3.6.0)              
+##  glue          1.3.2       2020-03-12 [1] CRAN (R 3.6.0)              
+##  gtable        0.3.0       2019-03-25 [1] CRAN (R 3.6.0)              
+##  haven         2.2.0       2019-11-08 [1] CRAN (R 3.6.0)              
+##  here        * 0.1         2017-05-28 [1] CRAN (R 3.6.0)              
+##  hms           0.5.3       2020-01-08 [1] CRAN (R 3.6.0)              
+##  htmltools     0.4.0       2019-10-04 [1] CRAN (R 3.6.0)              
+##  httr          1.4.1       2019-08-05 [1] CRAN (R 3.6.0)              
+##  jsonlite      1.6.1       2020-02-02 [1] CRAN (R 3.6.0)              
+##  knitr         1.28        2020-02-06 [1] CRAN (R 3.6.0)              
+##  lattice       0.20-40     2020-02-19 [1] CRAN (R 3.6.0)              
+##  lifecycle     0.2.0       2020-03-06 [1] CRAN (R 3.6.0)              
+##  lubridate     1.7.4       2018-04-11 [1] CRAN (R 3.6.0)              
+##  magrittr      1.5         2014-11-22 [1] CRAN (R 3.6.0)              
+##  memoise       1.1.0       2017-04-21 [1] CRAN (R 3.6.0)              
+##  modelr        0.1.6       2020-02-22 [1] CRAN (R 3.6.0)              
+##  munsell       0.5.0       2018-06-12 [1] CRAN (R 3.6.0)              
+##  nlme          3.1-145     2020-03-04 [1] CRAN (R 3.6.0)              
+##  pillar        1.4.3       2019-12-20 [1] CRAN (R 3.6.0)              
+##  pkgbuild      1.0.6       2019-10-09 [1] CRAN (R 3.6.0)              
+##  pkgconfig     2.0.3       2019-09-22 [1] CRAN (R 3.6.0)              
+##  pkgload       1.0.2       2018-10-29 [1] CRAN (R 3.6.0)              
+##  prettyunits   1.1.1       2020-01-24 [1] CRAN (R 3.6.0)              
+##  processx      3.4.2       2020-02-09 [1] CRAN (R 3.6.0)              
+##  ps            1.3.2       2020-02-13 [1] CRAN (R 3.6.0)              
+##  purrr       * 0.3.3       2019-10-18 [1] CRAN (R 3.6.0)              
+##  R6            2.4.1       2019-11-12 [1] CRAN (R 3.6.0)              
+##  Rcpp          1.0.4       2020-03-17 [1] CRAN (R 3.6.0)              
+##  readr       * 1.3.1       2018-12-21 [1] CRAN (R 3.6.0)              
+##  readxl        1.3.1       2019-03-13 [1] CRAN (R 3.6.0)              
+##  remotes       2.1.1       2020-02-15 [1] CRAN (R 3.6.0)              
+##  reprex        0.3.0       2019-05-16 [1] CRAN (R 3.6.0)              
+##  rlang         0.4.5.9000  2020-03-19 [1] Github (r-lib/rlang@a90b04b)
+##  rmarkdown     2.1         2020-01-20 [1] CRAN (R 3.6.0)              
+##  rprojroot     1.3-2       2018-01-03 [1] CRAN (R 3.6.0)              
+##  rstudioapi    0.11        2020-02-07 [1] CRAN (R 3.6.0)              
+##  rvest         0.3.5       2019-11-08 [1] CRAN (R 3.6.0)              
+##  scales        1.1.0       2019-11-18 [1] CRAN (R 3.6.0)              
+##  sessioninfo   1.1.1       2018-11-05 [1] CRAN (R 3.6.0)              
+##  stringi       1.4.6       2020-02-17 [1] CRAN (R 3.6.0)              
+##  stringr     * 1.4.0       2019-02-10 [1] CRAN (R 3.6.0)              
+##  testthat      2.3.2       2020-03-02 [1] CRAN (R 3.6.0)              
+##  tibble      * 2.1.3       2019-06-06 [1] CRAN (R 3.6.0)              
+##  tidyr       * 1.0.2       2020-01-24 [1] CRAN (R 3.6.0)              
+##  tidyselect    1.0.0       2020-01-27 [1] CRAN (R 3.6.0)              
+##  tidyverse   * 1.3.0       2019-11-21 [1] CRAN (R 3.6.0)              
+##  usethis       1.5.1       2019-07-04 [1] CRAN (R 3.6.0)              
+##  vctrs         0.2.99.9010 2020-03-19 [1] Github (r-lib/vctrs@94bea91)
+##  withr         2.1.2       2018-03-15 [1] CRAN (R 3.6.0)              
+##  xfun          0.12        2020-01-13 [1] CRAN (R 3.6.0)              
+##  xml2          1.2.5       2020-03-11 [1] CRAN (R 3.6.0)              
+##  yaml          2.2.1       2020-02-01 [1] CRAN (R 3.6.0)              
 ## 
 ## [1] /Library/Frameworks/R.framework/Versions/3.6/Resources/library
 ```

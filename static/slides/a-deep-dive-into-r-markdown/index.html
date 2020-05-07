@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>A deep dive into R Markdown</title>
     <meta charset="utf-8" />
@@ -32,7 +32,7 @@ class: center, middle, inverse, title-slide
 ````
 ---
 title: "Gun deaths"
-date: 2017-02-01
+date: "`r lubridate::today()`"
 output: html_document
 ---
 
@@ -44,12 +44,24 @@ youth &lt;- gun_deaths %&gt;%
   filter(age &lt;= 65)
 ```
 
+# Gun deaths by age
+
 We have data about `r nrow(gun_deaths)` individuals killed by guns. Only `r nrow(gun_deaths) - nrow(youth)` are older than 65. The distribution of the remainder is shown below:
 
 ```{r youth-dist, echo = FALSE}
 youth %&gt;% 
   ggplot(aes(age)) + 
   geom_freqpoly(binwidth = 1)
+```
+
+# Gun deaths by race
+
+```{r race-dist}
+youth %&gt;%
+  ggplot(aes(fct_infreq(race) %&gt;% fct_rev())) +
+  geom_bar() +
+  coord_flip() +
+  labs(x = "Victim race")
 ```
 ````
 
@@ -73,7 +85,20 @@ youth %&gt;%
 
 ---
 
+# Stop, collaborate, and listen
+
+* Render `gun-deaths.Rmd` as an HTML document
+* Add text describing the frequency polygon
+
+---
+
 # Code chunks
+
+    ```{r youth-dist, echo = FALSE, message = FALSE, warning = FALSE}
+    # code goes here
+    ```
+
+--
 
 * Naming code chunks
 * Code chunk options
@@ -84,9 +109,9 @@ youth %&gt;%
 * `error = TRUE`
 * `cache = TRUE`
 
---
+---
 
-## Global options
+# Global options
 
 ```r
 knitr::opts_chunk$set(
@@ -108,18 +133,28 @@ nrow(gun_deaths) - nrow(youth)` are older than 65.
 
 --
 
-We have data about 100798 individuals killed by guns. Only 15687 are older than 65. The distribution of the remainder is shown below:
+We have data about 100798 individuals killed by guns. Only 15687 are older than 65.
+
+---
+
+# Ice is back with my brand new invention
+
+* Set `echo = FALSE` as a global option
+* Enable caching as a global option and render the document. Look at the file structure for the cache. Now render the document again. Does it run faster?
 
 ---
 
 # YAML header
 
+
+
+
 ```
 ---
-title: "Gun deaths"
-author: "Benjamin Soltoff"
-date: 2017-02-01
-output: html_document
+author: Benjamin Soltoff
+date: '2020-05-06'
+title: Gun deaths
+output: github_document
 ---
 ```
 
@@ -131,11 +166,12 @@ output: html_document
 
 # HTML document
 
+
 ```
 ---
-title: "Untitled"
-author: "Benjamin Soltoff"
-date: "February 1, 2017"
+author: Benjamin Soltoff
+date: '2020-05-06'
+title: Gun deaths
 output: html_document
 ---
 ```
@@ -144,11 +180,12 @@ output: html_document
 
 # Table of contents
 
+
 ```
 ---
-title: "Untitled"
-author: "Benjamin Soltoff"
-date: "February 1, 2017"
+author: Benjamin Soltoff
+date: '2020-05-06'
+title: Gun deaths
 output:
   html_document:
     toc: true
@@ -160,11 +197,12 @@ output:
 
 # Appearance and style
 
+
 ```
 ---
-title: "Untitled"
-author: "Benjamin Soltoff"
-date: "February 1, 2017"
+author: Benjamin Soltoff
+date: '2020-05-06'
+title: Gun deaths
 output:
   html_document:
     theme: readable
@@ -174,12 +212,22 @@ output:
 
 ---
 
+# Something grabs a hold of me tightly
+
+* Add a table of contents
+* Use the `"cerulean"` theme
+* Modify the figures so they are 8x6
+
+---
+
 # PDF document
+
 
 ```
 ---
-title: "Gun deaths"
-date: 2017-02-01
+author: Benjamin Soltoff
+date: '2020-05-06'
+title: Gun deaths
 output: pdf_document
 ---
 ```
@@ -196,6 +244,22 @@ output: pdf_document
 
 ---
 
+# `render()`
+
+```r
+rmarkdown::render("my-document.Rmd", output_format = "html_document")
+rmarkdown::render("my-document.Rmd", output_format = "all")
+```
+
+---
+
+# Flow like a harpoon daily and nightly
+
+* Render `gun-deaths.Rmd` as both an HTML document and a PDF document
+    * If you do not have `\(\LaTeX\)` installed, render as an HTML document and a Word document
+
+---
+
 # R scripts
 
 
@@ -203,7 +267,6 @@ output: pdf_document
 # gun-deaths.R
 # 2017-02-01
 # Examine the distribution of age of victims in gun_deaths
-
 
 # load packages
 library(tidyverse)
@@ -220,6 +283,13 @@ nrow(gun_deaths) - nrow(youth)
 youth %&gt;% 
   ggplot(aes(age)) + 
   geom_freqpoly(binwidth = 1)
+
+# graph the distribution of youth, by race
+youth %&gt;%
+  ggplot(aes(fct_infreq(race) %&gt;% fct_rev())) +
+  geom_bar() +
+  coord_flip() +
+  labs(x = "Victim race")
 ```
 
 ---
@@ -237,94 +307,11 @@ youth %&gt;%
 
 * Interactively
 * Programmatically using `source()`
-
----
-
-# Reproducible examples
-
-* Minimal
-* Complete
-* Verifiable
-
----
-
-# `reprex`
-
-
-
-
-```
-library(tidyverse)
-count(diamonds, colour)
-```
-
----
-
-.center[
-
-![](https://memeshappen.com/media/created/One-does-not-simply-understand-git-meme-60285.jpg)
-
-]
-
----
-
-# Git
-
-## What files to commit
-
-* Source files
-* Markdown files
-* Data files
-
-## What files to not commit
-
-* Temporary files
-* Log files
-* Files with private details
-* Any file greater than 100 megabytes
-
----
-
-# `.gitignore`
-
-* System file
-* Tells Git which files/directories to ignore
-
----
-
-# Accidentally cloned from the master
-
-&lt;div style="width:100%;height:0;padding-bottom:50%;position:relative;"&gt;&lt;iframe src="https://giphy.com/embed/3oxHQKW9lw6rK9kYtq" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;&lt;/div&gt;
-
----
-
-# Accidentally cloned from the master
-
-```bash
-remote: Permission to hadley/ggplot2.git denied to bensoltoff.
-fatal: unable to access 'https://github.com/hadley/ggplot2.git/': The requested URL returned error: 403
-```
-
----
-
-# Avoiding Git problems
-
-1. Commit early and often
-1. Push regularly to GitHub
-
----
-
-# Burn it all down
-
-.center[
-
-![[Git (via xkcd)](https://xkcd.com/1597/)](https://imgs.xkcd.com/comics/git.png)
-
-]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script src="https://cfss.uchicago.edu/slides/macros.js"></script>
+<script src="https://platform.twitter.com/widgets.js"></script>
 <script>var slideshow = remark.create({
 "highlightLanguage": "r",
 "highlightStyle": "github",
@@ -369,9 +356,35 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     deleted = true;
   });
-})();</script>
-
-<script>
+})();
+(function() {
+  "use strict"
+  /* Replace <script> tags in slides area to make them executable
+   *
+   * Runs after post-processing of markdown source into slides and replaces only
+   * <script>s on the last slide of continued slides using the .has-continuation
+   * class added by xaringan. Finally, any <script>s in the slides area that
+   * aren't executed are commented out.
+   */
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container:not(.has-continuation) script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+  var scriptsNotExecuted = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container.has-continuation script'
+  );
+  if (!scriptsNotExecuted.length) return;
+  for (var i = 0; i < scriptsNotExecuted.length; i++) {
+    var comment = document.createComment(scriptsNotExecuted[i].outerHTML)
+    scriptsNotExecuted[i].parentElement.replaceChild(comment, scriptsNotExecuted[i])
+  }
+})();
 (function() {
   var links = document.getElementsByTagName('a');
   for (var i = 0; i < links.length; i++) {
@@ -380,7 +393,23 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
   }
 })();
-</script>
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
 
 <script>
 slideshow._releaseMath = function(el) {

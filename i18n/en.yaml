@@ -67,6 +67,9 @@
 - id: btn_download
   translation: Download
 
+- id: btn_notes
+  translation: In-class notes
+
 # About widget
 
 - id: interests

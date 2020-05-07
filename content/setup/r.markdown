@@ -112,10 +112,10 @@ install.packages("tidyverse")
 
 # install these packages as well
 install.packages(c("rmarkdown", "knitr", "gapminder",
-                   "tidytext", "devtools"))
+                   "tidytext", "devtools", "usethis"))
 ```
 
-### Acknowledgments {.toc-ignore}
+## Acknowledgments
 
 
 * This page is derived in part from ["UBC STAT 545A and 547M"](http://stat545.com), licensed under the [CC BY-NC 3.0 Creative Commons License](https://creativecommons.org/licenses/by-nc/3.0/).

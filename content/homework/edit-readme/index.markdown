@@ -8,20 +8,20 @@ type: post
 aliases: ["/hw01-edit-README.html"]
 
 summary: "Test your software installation, our GitHub setup, and our homework submission process via pull request, as well as demonstrate competency in Markdown."
-url_code: "https://github.com/cfss-fa19/hw01"
+url_code: "https://github.com/cfss-sp20/hw01"
 ---
 
 
 
 # Overview
 
-Due before class October 8th.
+Due by 11:59pm CT (Chicago) on April 13th.
 
 The goal is to test your software installation, our GitHub setup, and our homework submission process via pull request, as well as demonstrate competency in Markdown.
 
 # Fork the `hw01` repository
 
-Go [here](https://github.com/cfss-fa19/hw01) to fork the repo.
+Go [here](https://github.com/cfss-sp20/hw01) to fork the repo.
 
 # Edit `README.md`
 
@@ -55,15 +55,19 @@ Include a description of how you got the changes into `README.md` on GitHub when
 
 Follow instructions on [homework workflow](/faq/homework-guidelines/#homework-workflow).
 
+If you find these instructions confusing, watch the video demonstration.
+
+<iframe src="https://uchicago.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=7bd284fa-ceac-400b-a8db-ab9500f8d943&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&start=0&interactivity=all" width=720 height=405 style="border: 1px solid #464646;" allowfullscreen allow="autoplay"></iframe>
+
 # Rubric
 
-Check minus: `README.md` says equivalent of "This is the repository of Benjamin Soltoff". All work done via browser at github.com ... but that's just a guess, because student doesn't actually say how it was done.
+Needs work: `README.md` says equivalent of "This is the repository of Benjamin Soltoff". All work done via browser at github.com ... but that's just a guess, because student doesn't actually say how it was done.
 
-Check: something in between
+Satisfactory: something in between
 
-Check plus: `README.md` provides a proper introduction of student to the class. It also demonstrates experimentation with 4 or more aspects of the Markdown syntax. Examples: section headers, links, bold, italic, bullet points, image embed, etc. The student describes how they got the changes into `README.md` and offers a few reflections on their GitHub workflow and their experience with Markdown.
+Excellent: `README.md` provides a proper introduction of student to the class. It also demonstrates experimentation with 4 or more aspects of the Markdown syntax. Examples: section headers, links, bold, italic, bullet points, image embed, etc. The student describes how they got the changes into `README.md` and offers a few reflections on their GitHub workflow and their experience with Markdown.
 
-### Acknowledgments
+## Acknowledgments
 
 
 * This page is derived in part from ["UBC STAT 545A and 547M"](http://stat545.com), licensed under the [CC BY-NC 3.0 Creative Commons License](https://creativecommons.org/licenses/by-nc/3.0/).

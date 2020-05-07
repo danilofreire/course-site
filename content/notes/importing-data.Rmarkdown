@@ -53,7 +53,7 @@ data_large <- tibble(
   write_csv(here("static", "data", "sim-data-large.csv"))
 ```
 
-One of the main advantages of `readr` functions over base R functions is that [they are typically much faster](http://r4ds.had.co.nz/data-import.html#compared-to-base-r). For example, let's import a randomly generated CSV file with `r prettyNum(n_row_s, scientific = FALSE, big.mark = ",")` rows and `ncol(data_small)` columns. How long does it take `read.csv()` to import this file vs. `readr::read_csv()`? To assess the differences, we use the [`microbenchmark`](https://cran.r-project.org/web/packages/microbenchmark/) to run each function 100 times and compare the distributions of the time it takes to complete the data import:
+One of the main advantages of `readr` functions over base R functions is that [they are typically much faster](http://r4ds.had.co.nz/data-import.html#compared-to-base-r). For example, let's import a randomly generated CSV file with `r prettyNum(n_row_s, scientific = FALSE, big.mark = ",")` rows and `r ncol(data_small)` columns. How long does it take `read.csv()` to import this file vs. `readr::read_csv()`? To assess the differences, we use the [`microbenchmark`](https://cran.r-project.org/web/packages/microbenchmark/) to run each function 100 times and compare the distributions of the time it takes to complete the data import:
 
 ```{r compare-speed-small, dependson = "data-gen", message = FALSE}
 library(microbenchmark)
@@ -159,15 +159,15 @@ microbenchmark(
 
 By default, `write_rds()` does not compress the `.rds` file; use the `compress` argument to implement one of several different compression algorithms. `read_rds()` is noticably faster than `read_csv()`, and also has the benefit of [preserving column types](http://r4ds.had.co.nz/data-import.html#writing-to-a-file). The downside is that RDS is only implemented by R; it is not used by any other program so if you need to import/export data files into other languages like Python (or open in Excel), RDS is not a good storage format.
 
-## `feather`
+## `arrow`
 
-The `feather` package implements a binary file format that is cross-compatible with many different programming languages:
+The `arrow` package implements a binary file format called `featehr` that is cross-compatible with many different programming languages:
 
 ```{r feather, dependson = "challenge", message = FALSE}
-library(feather)
+library(arrow)
 
-write_feather(x = challenge, path = here("static", "data", "challenge.feather"))
-read_feather(path = here("static", "data", "challenge.feather"))
+write_feather(x = challenge, sink = here("static", "data", "challenge.feather"))
+read_feather(file = here("static", "data", "challenge.feather"))
 
 # compare read speeds
 microbenchmark(
@@ -179,14 +179,14 @@ microbenchmark(
     )
   ),
   read_rds = read_rds(path = here("static", "data", "challenge.rds")),
-  read_feather = read_feather(path = here("static", "data", "challenge.feather"))
+  read_feather = read_feather(file = here("static", "data", "challenge.feather"))
 ) %>%
   autoplot +
   scale_y_continuous(labels = scales::comma) +
   labs(y = "Time [microseconds], logged")
 ```
 
-`feather` is generally faster than RDS and `read_csv()`.^[Notice that the x-axis is logarithmically scaled.] Furthermore, [it has native support for Python, R, and Julia.](https://github.com/wesm/feather), so if you develop an analytics pipeline that switches between R and Python, you can import/export data files in `.feather` without any loss of information.
+`read_feather()` is generally faster than RDS and `read_csv()`.^[Notice that the x-axis is logarithmically scaled.] Furthermore, [it has native support for Python, R, and Julia.](http://arrow.apache.org/blog/2019/08/08/r-package-on-cran/), so if you develop an analytics pipeline that switches between R and Python, you can import/export data files in `.feather` without any loss of information.
 
 ## `readxl`
 
@@ -234,7 +234,11 @@ write_dta(data = mtcars, path = here("static", "data", "mtcars.dta"))
 
 That said, if you can obtain your data file in a plain `.csv` or `.tsv` file format, **I strongly recommend it**. SAS, SPSS, and Stata files represent labeled data and missing values differently from R. `haven` attempts to bridge the gap and preserve as much information as possible, but I frequently find myself stripping out all the label information and rebuilding it using `dplyr` functions and the codebook for the data file.
 
-> Need to import a SAS, SPSS, or Stata data file? Read [the documentation](http://haven.tidyverse.org/articles/semantics.html) to learn how to best handle value labels and missing values.
+{{% alert note %}}
+
+Need to import a SAS, SPSS, or Stata data file? Read [the documentation](http://haven.tidyverse.org/articles/semantics.html) to learn how to best handle value labels and missing values.
+
+{{% /alert %}}
 
 ## Session Info
 

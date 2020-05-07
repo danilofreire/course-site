@@ -8,7 +8,7 @@ type: post
 aliases: ["/hw03-wrangle-data.html"]
 
 summary: "Wrangle and explore messy datasets in practical research environments."
-url_code: "https://github.com/cfss-fa19/hw03"
+url_code: "https://github.com/cfss-sp20/hw03"
 ---
 
 ```{r setup, include=FALSE}
@@ -17,13 +17,13 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Overview
 
-Due before class on October 22nd.
+Due by 11:59pm CT (Chicago) on April 27th.
 
 The goal of this assignment is to practice wrangling and exploring data in a research context.
 
 # Fork the `hw03` repository
 
-Go [here](https://github.com/cfss-fa19/hw03) to fork the repo.
+Go [here](https://github.com/cfss-sp20/hw03) to fork the repo.
 
 # Part 1: Tidying messy data
 
@@ -60,9 +60,9 @@ For each question, you need to perform a [specific type of join operation](http:
 
 The [Supreme Court Database](http://scdb.wustl.edu/) contains detailed information of decisions of the U.S. Supreme Court. It is perhaps the most utilized database in the study of judicial politics. Until recently, the database only contained records on cases from the "modern" era (1946-present). Recently the database was extended backwards to include all decisions since the formation of the Court in 1791. While still in beta form, this extension opens the doors to new studies of the Court's pre-modern era decisions.
 
-In the `hw03` repository, you will find two data files: `SCDB_Legacy_03_justiceCentered_Citation.csv` and `SCDB_2017_01_justiceCentered_Citation.csv`. These are the exact same files you would obtain if you downloaded them from the original website; I have included them in the repository merely for your convenience. Documentation for the datasets can be found [here](http://scdb.wustl.edu/documentation.php).
+In the `hw03` repository, you will find two data files: `SCDB_Legacy_05_justiceCentered_Citation.csv` and `SCDB_2019_01_justiceCentered_Citation.csv`. These are the exact same files you would obtain if you downloaded them from the original website; I have included them in the repository merely for your convenience. Documentation for the datasets can be found [here](http://scdb.wustl.edu/documentation.php).
 
-The data is structured in a tidy fashion.^[Tidy, though not necessarily the most efficient. You could definitely reorganize the datasets into multiple tables of relational data.] That is, every row is a vote by one justice on one case for every case decided from the 1791-2016 terms.^[Also known as a panel dataset. Terms run from October through June, so the 2016 term contains cases decided from October 2016 - June 2017] There are several ID variables which are useful for other types of research: for our purposes, the only ID variable you need to concern yourself with is `caseIssuesId`. Variables you will want to familiarize yourself with include `term`, `justice`, `justiceName`, `decisionDirection`, `majVotes`, `minVotes`, `majority`, `chief`, `dateDecision`, and `decisionType`. Pay careful attention in the documentation to how these variables are coded.
+The data is structured in a tidy fashion.^[Tidy, though not necessarily the most efficient. You could definitely reorganize the datasets into multiple tables of relational data.] That is, every row is a vote by one justice on one case for every case decided from the 1791-2018 terms.^[Also known as a panel dataset. Terms run from October through June, so the 2018 term contains cases decided from October 2018 - June 2019] There are several ID variables which are useful for other types of research: for our purposes, the only ID variable you need to concern yourself with is `caseIssuesId`. Variables you will want to familiarize yourself with include `term`, `justice`, `justiceName`, `decisionDirection`, `majVotes`, `minVotes`, `majority`, `chief`, `dateDecision`, and `decisionType`. Pay careful attention in the documentation to how these variables are coded.
 
 In order to analyze the Supreme Court data, you will need to import these two files and combine them together (see `bind_rows()` from the `dplyr` package). Friendly warning: you will initially encounter an error attempting to bind the two data frames. Use your powers of deduction (and [R4DS](http://r4ds.had.co.nz/data-import.html)/Google/Stack Overflow/classmates/me and the TAs) to figure out how to fix this error.
 
@@ -84,16 +84,20 @@ Pay careful attention to the unit of analysis required to answer each question. 
     * Let me emphasize: you want to skim/read chapter 16 in [R for Data Science](http://r4ds.had.co.nz/dates-and-times.html) as it discusses working with dates and times using the `lubridate` package
     * Also note, the Supreme Court's calendar runs on the federal government's [fiscal year](https://en.wikipedia.org/wiki/Fiscal_year#Federal_government). That means the first month of the court's term is October, running through September of the following calendar year.
 
-> You only need to complete one of the two bolded questions. Only complete both if you are feeling particularly masochistic!
+{{% alert note %}}
+
+You only need to complete one of the two bolded questions. Only complete both if you are feeling particularly masochistic!
+
+{{% /alert %}}
 
 # Submit the assignment
 
-Your assignment should be submitted as three RMarkdown documents. Follow instructions on [homework workflow](/faq/homework-guidelines/#homework-workflow). As part of the pull request, you're encouraged to reflect on what was hard/easy, problems you solved, helpful tutorials you read, etc.
+Your assignment should be submitted as three RMarkdown documents using the `github_document` format. Follow instructions on [homework workflow](/faq/homework-guidelines/#homework-workflow). As part of the pull request, you're encouraged to reflect on what was hard/easy, problems you solved, helpful tutorials you read, etc.
 
 # Rubric
 
-Check minus: Displays minimal effort. Doesn't complete all components. Code is poorly written and not documented. Uses the same type of plot for each graph, or doesn't use plots appropriate for the variables being analyzed. No record of commits other than the final push to GitHub.
+Needs work: Displays minimal effort. Doesn't complete all components. Code is poorly written and not documented. Uses the same type of plot for each graph, or doesn't use plots appropriate for the variables being analyzed. No record of commits other than the final push to GitHub.
 
-Check: Solid effort. Hits all the elements. No clear mistakes. Easy to follow (both the code and the output). Nothing spectacular, either bad or good.
+Satisfactory: Solid effort. Hits all the elements. No clear mistakes. Easy to follow (both the code and the output). Nothing spectacular, either bad or good.
 
-Check plus: Finished all components of the assignment correctly and attempted at least one advanced challenge. Code is well-documented (both self-documented and with additional comments as necessary). Graphs and tables are properly labeled. Use multiple commits to back up and show a progression in the work. Analysis is clear and easy to follow, either because graphs are labeled clearly or you've written additional text to describe how you interpret the output.
+Excellent: Finished all components of the assignment correctly and attempted at least one advanced challenge. Code is well-documented (both self-documented and with additional comments as necessary). Graphs and tables are properly labeled. Use multiple commits to back up and show a progression in the work. Analysis is clear and easy to follow, either because graphs are labeled clearly or you've written additional text to describe how you interpret the output.

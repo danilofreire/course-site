@@ -1,7 +1,7 @@
 ---
-title: "Building Shiny Apps: User interface"
-date: 2019-07-24T12:30:00
-publishDate: 2019-05-27T13:30:00
+title: "Building Shiny apps: user interface"
+date: 2020-05-27T13:30:00-06:00
+publishDate: 2019-05-20T13:30:00-06:00
 draft: true
 type: "talk"
 
@@ -9,7 +9,7 @@ aliases: ["/cm019.html"]
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-time_end: 2019-07-24T13:50:00
+time_end: 2020-05-27T14:50:00-06:00
 all_day: false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
@@ -20,7 +20,7 @@ abstract: ""
 summary: "Introduce Shiny applications and practice constructing a user interface."
 
 # Location of event.
-location: "Room 104, Stuart Hall, Chicago, IL"
+location: "Online"
 
 # Is this a selected talk? (true/false)
 selected: false
@@ -41,10 +41,6 @@ math: false
 
 
 
-{{% alert note %}}
-We will not have class this week. This syllabus entry is only for those who wish to work on the material on their own.
-{{% /alert %}}
-
 ## Overview
 
 * Introduce Shiny apps
@@ -62,4 +58,4 @@ We will not have class this week. This syllabus entry is only for those who wish
 * [Git repo for dating age rule app](https://github.com/bensoltoff/age-rule)
 * [Chicago wage employees sample app](https://bensoltoff.shinyapps.io/chicago-employees/)
 
-## What you need to do
+## What you need to do after class

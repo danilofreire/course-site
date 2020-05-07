@@ -20,13 +20,13 @@ menu:
 
 ### Me (Dr. Benjamin Soltoff)
 
-I am an Assistant Instructional Professor in the [Masters in Computational Social Science](http://macss.uchicago.edu) program. I earned my PhD in political science from [Penn State University](http://polisci.la.psu.edu/) in 2015. [My research interests](https://www.bensoltoff.com) focus on judicial politics, state courts, and agenda-setting. Methodologically I am interested in statistical learning and text analysis. I was first drawn to programming in grad school, starting out in [Stata](http://www.stata.com/) and eventually making the transition to [R](https://www.r-project.org/) and [Python](https://www.python.org/). I learned these programming languages out of necessity - I needed to process, analyze, and code tens of thousands of judicial opinions and extract key information into a tabular format. I am not a computer scientist. I am a social scientist who uses programming and computational tools to answer my research questions.
+I am an Assistant Instructional Professor in the [Masters in Computational Social Science](http://macss.uchicago.edu) program. I earned my PhD in political science from [Penn State University](http://polisci.la.psu.edu/). [My research interests](https://www.bensoltoff.com) focus on judicial politics, state courts, and agenda-setting. Methodologically I am interested in statistical learning and text analysis. I was first drawn to programming in grad school, starting out in [Stata](http://www.stata.com/) and eventually making the transition to [R](https://www.r-project.org/) and [Python](https://www.python.org/). I learned these programming languages out of necessity - I needed to process, analyze, and code tens of thousands of judicial opinions and extract key information into a tabular format. I am not a computer scientist. I am a social scientist who uses programming and computational tools to answer my research questions.
 
 ### Teaching assistants
 
-* Wanitchaya (Mint) Poonpatanapricha
-* Ruben Rodriguez
-* Xiaogao Zhou
+* Deblina (Deb) Mukherjee
+* Dominique Janvier
+* Neeraj Sharma
 
 ## Course objectives
 
@@ -45,7 +45,11 @@ We will cover many different topics in this course, including:
 
 ## How we will do this
 
-> Teach a (wo)man to fish
+{{% alert note %}}
+
+Teach a (wo)man to fish
+
+{{% /alert %}}
 
 This is a hands-on class. You will learn by writing programs and analysis. Don't fear the word "program". A program can be as simple as:
 
@@ -58,7 +62,7 @@ print("Hello world")
 ## [1] "Hello world"
 ```
 
-> One line of code, and it performs a very specific task (print the phrase "Hello world" to the screen)
+One line of code, and it performs a very specific task (print the phrase "Hello world" to the screen).
 
 More typically, your programs will perform statistical and graphical analysis on data of a variety of forms. For example, here I analyze a dataset of automobiles to assess the relationship between engine displacement and highway mileage:
 
@@ -137,7 +141,11 @@ You will fail in this class. You will stumble, you will get lost, confused, not 
 
 We will follow the **15 minute rule** in this class. If you encounter a problem in your assignments, spend 15 minutes troubleshooting the problem on your own. Make use of [Google](https://www.google.com) and [StackOverflow](http://stackoverflow.com/) to resolve the error. However, if after 15 minutes you still cannot solve the problem, **ask for help**. We will use [GitHub to ask and answer class-related questions](https://github.com/uc-cfss/Discussion).
 
-> Check out [this guide on how to properly ask questions, including tips and details on what information you should include in your post](/faq/asking-questions/)
+{{% alert note %}}
+
+Check out [this guide on how to properly ask questions, including tips and details on what information you should include in your post](/faq/asking-questions/).
+
+{{% /alert %}}
 
 ## Plagiarism
 
@@ -148,15 +156,29 @@ I am trying to balance two competing perspectives:
 
 The point is that collaboration in this class is good - **to a point**. You are always, unless otherwise noted, expected to write and submit your own work. You should not blindly copy from your peers. You should not copy large chunks of code from the internet. That said, using the internet to debug programs is fine. Asking a classmate to help you debug your program is fine (the key phrase is *help you*, not do it for you).
 
-> [As Computer Coding Classes Swell, So Does Cheating](https://www.nytimes.com/2017/05/29/us/computer-science-cheating.html)
+{{% alert note %}}
+
+[As Computer Coding Classes Swell, So Does Cheating](https://www.nytimes.com/2017/05/29/us/computer-science-cheating.html)
+
+{{% /alert %}}
 
 *The bottom line* - if you don't understand what the program is doing and are not prepared to explain it in detail, you should not submit it.
 
 ## Evaluations
 
-Each week you will complete a series of programming assignments linked to lecture materials. These assignments will generally be due the following week prior to Monday's class. Weekly lab sessions will be held to assist students in completing these assignments. Assignments will initially come with starter code, or an initial version of the program where you need to fill in the blanks to make it work. As the quarter moves on and your skills become more developed, I will provide less help upfront.
+Each week you will complete a series of programming assignments linked to lecture materials. These assignments will generally be due the following week ~~prior to Monday's class~~ by 11:59pm on Monday. Weekly lab sessions will be held to assist students in completing these assignments. Assignments will initially come with starter code, or an initial version of the program where you need to fill in the blanks to make it work. As the quarter moves on and your skills become more developed, I will provide less help upfront.
 
 Each assignment will be evaluated by myself or the TA, as well as by *two peers*. Peer review is a crucial element to this course, in that by [eating each other's dog food](https://en.wikipedia.org/wiki/Eating_your_own_dog_food) you will learn to read, debug, and reproduce code and analysis. And while I and the TA are competent users in R, your classmates are not - so make sure your code is [well-documented](#documentation) so that others with basic knowledge of programming and R can follow along and reuse your code. Be sure to read the instructions for [peer review](/faq/peer-evaluations/) so you know how to provide useful feedback.
+
+{{% alert note %}}
+
+A note on grades for the spring 2020 quarter: I intend to implement the same grading system/evaluation standard that I employ for in-person classes. I set a high standard for homework submissions. That said, the vast majority of students earn a B+ or better in the course. If I need to make any adjustments to grades as a result of remote learning/COVID-19 issues, I will do it at the end of the quarter.
+
+I do permit students to take the course Pass/Fail. For undergraduates - if you are completing the course as a major requirement, confirm your department will allow Pass/Fail grades this quarter.
+
+Students taking the course for a Pass are still expected to complete all assignments satisfactorily. As a rule of thumb, if you earned satisfactory scores for all assignments, you would earn a B+. Students need to earn the equivalent of a B- or better to earn a Pass in the course.
+
+{{% /alert %}}
 
 ## The computational social science workflow
 
@@ -248,14 +270,14 @@ Let's see how two students (Jane and Sally) would complete this. Jane will use s
     * Then she creates new variables for per capita ice cream sales and per capita crime rates.
     * After that, she estimates a linear regression model for the relationship between the two per capita variables.
     * Finally she creates a graph plotting the relationship between these two variables.
-1. Jane writes her report in Google Docs
+1. Jane writes her report in Google Docs.
     * Huzzah! She finds a correlation between the two variables. Jane writes up her awesome findings and prepares for her A+.
     * The professor wants her results in the paper itself? Darn it. Okay, she copies and pastes her regression results and graph into the paper.
 1. Jane prints her report and turns it in to the professor. Done!
 
 #### Sally: Using a computational data science workflow
 
-1. Sally creates a folder specifically for this project and divides it into subfolders (e.g. `data`, `graphics`, `output`)
+1. Sally creates a folder specifically for this project and divides it into subfolders (e.g. `data`, `graphics`, `output`).
 1. Next she finds data files online with total annual ice cream sales in the 50 largest U.S. cities from 2001-2010 and total numbers of crimes (by type) for the 50 largest U.S. cities from 2001-2010. She writes a program to download these files to the `data` subfolder.
 1. Then Sally writes a program in R that opens each data file and filters/cleans the data to get the necessary variables. She saves the cleaned data as new files in the `data` folder.
 1. Sally writes a separate program which imports the cleaned data files, estimates a regression model, generates a graph, and saves the regression results and graph to the `output` subfolder.
@@ -307,7 +329,11 @@ If Jane wanted to rollback to an earlier implementation of her linear regression
 
 Programs include **comments** which are ignored by the computer but are intended for humans reading the code to understand what it does. So if you decide to ignore frozen yogurt sales, you can include this comment in your code to explain why the program drops that column from the data.
 
-> Comments are the **what** - what is the program doing? Code is the **how** - how is the program going to do this?
+{{% alert note %}}
+
+Comments are the **what** - what is the program doing? Code is the **how** - how is the program going to do this?
+
+{{% /alert %}}
 
 Computer code should also be **self-documenting**. That is, the code should be comprehensible whenever possible. For example, if you are creating a scatterplot of the relationship between ice cream sales and crime, don't store it in your code as `graph`. Instead, give it an intelligible name that intuitively means something, such as `icecream_crime_scatterplot` or even `ic_crime_plot`. These records are included directly in the code and should be updated whenever the code is updated.
 
@@ -367,100 +393,101 @@ devtools::session_info()
 ```
 
 ```
-## ─ Session info ──────────────────────────────────────────────────────────
+## ─ Session info ───────────────────────────────────────────────────────────────
 ##  setting  value                       
-##  version  R version 3.6.0 (2019-04-26)
-##  os       macOS Mojave 10.14.6        
+##  version  R version 3.6.3 (2020-02-29)
+##  os       macOS Catalina 10.15.4      
 ##  system   x86_64, darwin15.6.0        
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/Chicago             
-##  date     2019-09-28                  
+##  date     2020-04-10                  
 ## 
-## ─ Packages ──────────────────────────────────────────────────────────────
-##  package     * version date       lib source        
-##  askpass       1.1     2019-01-13 [1] CRAN (R 3.6.0)
-##  assertthat    0.2.1   2019-03-21 [1] CRAN (R 3.6.0)
-##  backports     1.1.4   2019-04-10 [1] CRAN (R 3.6.0)
-##  blogdown      0.15    2019-08-21 [1] CRAN (R 3.6.0)
-##  bookdown      0.13    2019-08-21 [1] CRAN (R 3.6.0)
-##  broom       * 0.5.2   2019-04-07 [1] CRAN (R 3.6.0)
-##  callr         3.3.1   2019-07-18 [1] CRAN (R 3.6.0)
-##  cellranger    1.1.0   2016-07-27 [1] CRAN (R 3.6.0)
-##  cli           1.1.0   2019-03-19 [1] CRAN (R 3.6.0)
-##  codetools     0.2-16  2018-12-24 [1] CRAN (R 3.6.0)
-##  colorspace    1.4-1   2019-03-18 [1] CRAN (R 3.6.0)
-##  crayon        1.3.4   2017-09-16 [1] CRAN (R 3.6.0)
-##  curl          4.0     2019-07-22 [1] CRAN (R 3.6.0)
-##  desc          1.2.0   2018-05-01 [1] CRAN (R 3.6.0)
-##  devtools      2.2.0   2019-09-07 [1] CRAN (R 3.6.0)
-##  digest        0.6.20  2019-07-04 [1] CRAN (R 3.6.0)
-##  dplyr       * 0.8.3   2019-07-04 [1] CRAN (R 3.6.0)
-##  DT            0.8     2019-08-07 [1] CRAN (R 3.6.0)
-##  ellipsis      0.2.0.1 2019-07-02 [1] CRAN (R 3.6.0)
-##  evaluate      0.14    2019-05-28 [1] CRAN (R 3.6.0)
-##  forcats     * 0.4.0   2019-02-17 [1] CRAN (R 3.6.0)
-##  fs            1.3.1   2019-05-06 [1] CRAN (R 3.6.0)
-##  generics      0.0.2   2018-11-29 [1] CRAN (R 3.6.0)
-##  ggplot2     * 3.2.1   2019-08-10 [1] CRAN (R 3.6.0)
-##  glue          1.3.1   2019-03-12 [1] CRAN (R 3.6.0)
-##  gtable        0.3.0   2019-03-25 [1] CRAN (R 3.6.0)
-##  haven         2.1.1   2019-07-04 [1] CRAN (R 3.6.0)
-##  here          0.1     2017-05-28 [1] CRAN (R 3.6.0)
-##  hms           0.5.1   2019-08-23 [1] CRAN (R 3.6.0)
-##  htmltools     0.3.6   2017-04-28 [1] CRAN (R 3.6.0)
-##  htmlwidgets   1.3     2018-09-30 [1] CRAN (R 3.6.0)
-##  httr          1.4.1   2019-08-05 [1] CRAN (R 3.6.0)
-##  jsonlite      1.6     2018-12-07 [1] CRAN (R 3.6.0)
-##  knitr         1.24    2019-08-08 [1] CRAN (R 3.6.0)
-##  labeling      0.3     2014-08-23 [1] CRAN (R 3.6.0)
-##  lattice       0.20-38 2018-11-04 [1] CRAN (R 3.6.0)
-##  lazyeval      0.2.2   2019-03-15 [1] CRAN (R 3.6.0)
-##  lifecycle     0.1.0   2019-08-01 [1] CRAN (R 3.6.0)
-##  lubridate     1.7.4   2018-04-11 [1] CRAN (R 3.6.0)
-##  magrittr      1.5     2014-11-22 [1] CRAN (R 3.6.0)
-##  memoise       1.1.0   2017-04-21 [1] CRAN (R 3.6.0)
-##  modelr        0.1.5   2019-08-08 [1] CRAN (R 3.6.0)
-##  munsell       0.5.0   2018-06-12 [1] CRAN (R 3.6.0)
-##  nlme          3.1-141 2019-08-01 [1] CRAN (R 3.6.0)
-##  openssl       1.4.1   2019-07-18 [1] CRAN (R 3.6.0)
-##  pillar        1.4.2   2019-06-29 [1] CRAN (R 3.6.0)
-##  pkgbuild      1.0.5   2019-08-26 [1] CRAN (R 3.6.0)
-##  pkgconfig     2.0.2   2018-08-16 [1] CRAN (R 3.6.0)
-##  pkgload       1.0.2   2018-10-29 [1] CRAN (R 3.6.0)
-##  prettyunits   1.0.2   2015-07-13 [1] CRAN (R 3.6.0)
-##  processx      3.4.1   2019-07-18 [1] CRAN (R 3.6.0)
-##  ps            1.3.0   2018-12-21 [1] CRAN (R 3.6.0)
-##  purrr       * 0.3.2   2019-03-15 [1] CRAN (R 3.6.0)
-##  R6            2.4.0   2019-02-14 [1] CRAN (R 3.6.0)
-##  Rcpp          1.0.2   2019-07-25 [1] CRAN (R 3.6.0)
-##  readr       * 1.3.1   2018-12-21 [1] CRAN (R 3.6.0)
-##  readxl        1.3.1   2019-03-13 [1] CRAN (R 3.6.0)
-##  remotes       2.1.0   2019-06-24 [1] CRAN (R 3.6.0)
-##  rlang         0.4.0   2019-06-25 [1] CRAN (R 3.6.0)
-##  rmarkdown     1.15    2019-08-21 [1] CRAN (R 3.6.0)
-##  rprojroot     1.3-2   2018-01-03 [1] CRAN (R 3.6.0)
-##  rstudioapi    0.10    2019-03-19 [1] CRAN (R 3.6.0)
-##  rtweet      * 0.6.9   2019-05-19 [1] CRAN (R 3.6.0)
-##  rvest         0.3.4   2019-05-15 [1] CRAN (R 3.6.0)
-##  scales        1.0.0   2018-08-09 [1] CRAN (R 3.6.0)
-##  sessioninfo   1.1.1   2018-11-05 [1] CRAN (R 3.6.0)
-##  stringi       1.4.3   2019-03-12 [1] CRAN (R 3.6.0)
-##  stringr     * 1.4.0   2019-02-10 [1] CRAN (R 3.6.0)
-##  testthat      2.2.1   2019-07-25 [1] CRAN (R 3.6.0)
-##  tibble      * 2.1.3   2019-06-06 [1] CRAN (R 3.6.0)
-##  tidyr       * 1.0.0   2019-09-11 [1] CRAN (R 3.6.0)
-##  tidyselect    0.2.5   2018-10-11 [1] CRAN (R 3.6.0)
-##  tidyverse   * 1.2.1   2017-11-14 [1] CRAN (R 3.6.0)
-##  usethis       1.5.1   2019-07-04 [1] CRAN (R 3.6.0)
-##  vctrs         0.2.0   2019-07-05 [1] CRAN (R 3.6.0)
-##  withr         2.1.2   2018-03-15 [1] CRAN (R 3.6.0)
-##  xfun          0.9     2019-08-21 [1] CRAN (R 3.6.0)
-##  xml2          1.2.2   2019-08-09 [1] CRAN (R 3.6.0)
-##  yaml          2.2.0   2018-07-25 [1] CRAN (R 3.6.0)
-##  zeallot       0.1.0   2018-01-28 [1] CRAN (R 3.6.0)
+## ─ Packages ───────────────────────────────────────────────────────────────────
+##  package     * version     date       lib source                      
+##  askpass       1.1         2019-01-13 [1] CRAN (R 3.6.0)              
+##  assertthat    0.2.1       2019-03-21 [1] CRAN (R 3.6.0)              
+##  backports     1.1.5       2019-10-02 [1] CRAN (R 3.6.0)              
+##  blogdown      0.18        2020-03-04 [1] CRAN (R 3.6.0)              
+##  bookdown      0.18        2020-03-05 [1] CRAN (R 3.6.0)              
+##  broom       * 0.5.5       2020-02-29 [1] CRAN (R 3.6.0)              
+##  callr         3.4.2       2020-02-12 [1] CRAN (R 3.6.1)              
+##  cellranger    1.1.0       2016-07-27 [1] CRAN (R 3.6.0)              
+##  cli           2.0.2       2020-02-28 [1] CRAN (R 3.6.0)              
+##  codetools     0.2-16      2018-12-24 [1] CRAN (R 3.6.3)              
+##  colorspace    1.4-1       2019-03-18 [1] CRAN (R 3.6.0)              
+##  crayon        1.3.4       2017-09-16 [1] CRAN (R 3.6.0)              
+##  curl          4.3         2019-12-02 [1] CRAN (R 3.6.0)              
+##  DBI           1.1.0       2019-12-15 [1] CRAN (R 3.6.0)              
+##  dbplyr        1.4.2       2019-06-17 [1] CRAN (R 3.6.0)              
+##  desc          1.2.0       2018-05-01 [1] CRAN (R 3.6.0)              
+##  devtools      2.2.2       2020-02-17 [1] CRAN (R 3.6.0)              
+##  digest        0.6.25      2020-02-23 [1] CRAN (R 3.6.0)              
+##  dplyr       * 0.8.5       2020-03-07 [1] CRAN (R 3.6.0)              
+##  ellipsis      0.3.0       2019-09-20 [1] CRAN (R 3.6.0)              
+##  evaluate      0.14        2019-05-28 [1] CRAN (R 3.6.0)              
+##  fansi         0.4.1       2020-01-08 [1] CRAN (R 3.6.0)              
+##  farver        2.0.3       2020-01-16 [1] CRAN (R 3.6.0)              
+##  forcats     * 0.5.0       2020-03-01 [1] CRAN (R 3.6.0)              
+##  fs            1.3.2       2020-03-05 [1] CRAN (R 3.6.0)              
+##  generics      0.0.2       2018-11-29 [1] CRAN (R 3.6.0)              
+##  ggplot2     * 3.3.0       2020-03-05 [1] CRAN (R 3.6.0)              
+##  glue          1.3.2       2020-03-12 [1] CRAN (R 3.6.0)              
+##  gtable        0.3.0       2019-03-25 [1] CRAN (R 3.6.0)              
+##  haven         2.2.0       2019-11-08 [1] CRAN (R 3.6.0)              
+##  here          0.1         2017-05-28 [1] CRAN (R 3.6.0)              
+##  hms           0.5.3       2020-01-08 [1] CRAN (R 3.6.0)              
+##  htmltools     0.4.0       2019-10-04 [1] CRAN (R 3.6.0)              
+##  httr          1.4.1       2019-08-05 [1] CRAN (R 3.6.0)              
+##  jsonlite      1.6.1       2020-02-02 [1] CRAN (R 3.6.0)              
+##  knitr         1.28        2020-02-06 [1] CRAN (R 3.6.0)              
+##  labeling      0.3         2014-08-23 [1] CRAN (R 3.6.0)              
+##  lattice       0.20-40     2020-02-19 [1] CRAN (R 3.6.0)              
+##  lifecycle     0.2.0       2020-03-06 [1] CRAN (R 3.6.0)              
+##  lubridate     1.7.4       2018-04-11 [1] CRAN (R 3.6.0)              
+##  magrittr      1.5         2014-11-22 [1] CRAN (R 3.6.0)              
+##  memoise       1.1.0       2017-04-21 [1] CRAN (R 3.6.0)              
+##  modelr        0.1.6       2020-02-22 [1] CRAN (R 3.6.0)              
+##  munsell       0.5.0       2018-06-12 [1] CRAN (R 3.6.0)              
+##  nlme          3.1-145     2020-03-04 [1] CRAN (R 3.6.0)              
+##  openssl       1.4.1       2019-07-18 [1] CRAN (R 3.6.0)              
+##  pillar        1.4.3       2019-12-20 [1] CRAN (R 3.6.0)              
+##  pkgbuild      1.0.6       2019-10-09 [1] CRAN (R 3.6.0)              
+##  pkgconfig     2.0.3       2019-09-22 [1] CRAN (R 3.6.0)              
+##  pkgload       1.0.2       2018-10-29 [1] CRAN (R 3.6.0)              
+##  prettyunits   1.1.1       2020-01-24 [1] CRAN (R 3.6.0)              
+##  processx      3.4.2       2020-02-09 [1] CRAN (R 3.6.0)              
+##  ps            1.3.2       2020-02-13 [1] CRAN (R 3.6.0)              
+##  purrr       * 0.3.3       2019-10-18 [1] CRAN (R 3.6.0)              
+##  R6            2.4.1       2019-11-12 [1] CRAN (R 3.6.0)              
+##  Rcpp          1.0.4       2020-03-17 [1] CRAN (R 3.6.0)              
+##  readr       * 1.3.1       2018-12-21 [1] CRAN (R 3.6.0)              
+##  readxl        1.3.1       2019-03-13 [1] CRAN (R 3.6.0)              
+##  remotes       2.1.1       2020-02-15 [1] CRAN (R 3.6.0)              
+##  reprex        0.3.0       2019-05-16 [1] CRAN (R 3.6.0)              
+##  rlang         0.4.5.9000  2020-03-19 [1] Github (r-lib/rlang@a90b04b)
+##  rmarkdown     2.1         2020-01-20 [1] CRAN (R 3.6.0)              
+##  rprojroot     1.3-2       2018-01-03 [1] CRAN (R 3.6.0)              
+##  rstudioapi    0.11        2020-02-07 [1] CRAN (R 3.6.0)              
+##  rtweet      * 0.7.0       2020-01-08 [1] CRAN (R 3.6.0)              
+##  rvest         0.3.5       2019-11-08 [1] CRAN (R 3.6.0)              
+##  scales        1.1.0       2019-11-18 [1] CRAN (R 3.6.0)              
+##  sessioninfo   1.1.1       2018-11-05 [1] CRAN (R 3.6.0)              
+##  stringi       1.4.6       2020-02-17 [1] CRAN (R 3.6.0)              
+##  stringr     * 1.4.0       2019-02-10 [1] CRAN (R 3.6.0)              
+##  testthat      2.3.2       2020-03-02 [1] CRAN (R 3.6.0)              
+##  tibble      * 2.1.3       2019-06-06 [1] CRAN (R 3.6.0)              
+##  tidyr       * 1.0.2       2020-01-24 [1] CRAN (R 3.6.0)              
+##  tidyselect    1.0.0       2020-01-27 [1] CRAN (R 3.6.0)              
+##  tidyverse   * 1.3.0       2019-11-21 [1] CRAN (R 3.6.0)              
+##  usethis       1.5.1       2019-07-04 [1] CRAN (R 3.6.0)              
+##  vctrs         0.2.99.9010 2020-03-19 [1] Github (r-lib/vctrs@94bea91)
+##  withr         2.1.2       2018-03-15 [1] CRAN (R 3.6.0)              
+##  xfun          0.12        2020-01-13 [1] CRAN (R 3.6.0)              
+##  xml2          1.2.5       2020-03-11 [1] CRAN (R 3.6.0)              
+##  yaml          2.2.1       2020-02-01 [1] CRAN (R 3.6.0)              
 ## 
 ## [1] /Library/Frameworks/R.framework/Versions/3.6/Resources/library
 ```

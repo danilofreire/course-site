@@ -1,13 +1,13 @@
 ---
 title: "Reproducible workflow"
-date: 2019-11-05T12:30:00
-publishDate: 2019-05-01T13:30:00
+date: 2020-05-11T13:30:00-06:00
+publishDate: 2019-05-01T13:30:00-06:00
 draft: false
 type: "talk"
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-time_end: 2019-11-05T10:50:00
+time_end: 2020-05-11T10:50:00-06:00
 all_day: false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
@@ -18,7 +18,7 @@ abstract: ""
 summary: "Methods for implementing a tidy, reproducible workflow."
 
 # Location of event.
-location: "Room 104, Stuart Hall, Chicago, IL"
+location: "Online"
 
 # Is this a selected talk? (true/false)
 selected: false
@@ -48,16 +48,14 @@ math: false
 
 ## Before class
 
-## Class materials
+* Read chapters 1-3, 7 in [*What They Forgot to Teach You About R*](https://rstats.wtf/)
 
-* [Saving the source and blank slates](/notes/saving-source)
-* [Project-oriented workflow](/notes/project-oriented-workflow)
-* [Use safe filepaths](/notes/safe-filepaths/)
-* [R startup procedures](/notes/r-startup/)
+## Class materials
 
 ## Additional resources
 
-* [What They Forgot to Teach You About R](https://whattheyforgot.org/)
+* [What They Forgot to Teach You About R](https://rstats.wtf/)
 * [Project-oriented workflow](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/)
 
-## What you need to do
+## What you need to do after class
+

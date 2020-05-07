@@ -22,6 +22,16 @@ knitr::opts_chunk$set(cache = TRUE)
 library(tidyverse)
 ```
 
+{{% alert note %}}
+
+Run the below code in your console to download this exercise as a set of R scripts.
+
+```r
+usethis::use_course("uc-cfss/pipes-and-functions-in-r")
+```
+
+{{% /alert %}}
+
 **Functions** are an important tool in the computational social scientist's toolkit. They enable you to avoid repetition and copy-and-paste and greatly increase the efficiency of your code writing.
 
 * **They are easy to reuse**. If an update to the code is necessary, you revise it in one location and the changes propogate to all over components that implement the function.
@@ -30,7 +40,11 @@ library(tidyverse)
 
 In fact, you have used functions the entire time you have programmed in R. The only difference is that the functions were written for you. `tidyr`, `dplyr`, `ggplot2`, all of these libraries contain major functions for tidying, transforming, and visualizing data. **You have the power to write your own functions.** Well, if you don't already you soon will.
 
-> Good rule of thumb - [if you have copied and pasted a block of code more than twice, it is time to convert it to a function.](http://r4ds.had.co.nz/functions.html#when-should-you-write-a-function)
+{{% alert note %}}
+
+Good rule of thumb - [if you have copied and pasted a block of code more than twice, it is time to convert it to a function.](http://r4ds.had.co.nz/functions.html#when-should-you-write-a-function)
+
+{{% /alert %}}
 
 ## Components of a function
 
@@ -181,7 +195,7 @@ my_function(3, 4)
 
 ```{r sum-of-sq-solve}
 sum_of_squares <- function(x, y){
-  x^2 + y^2
+  return(x^2 + y^2)
 }
 ```
 
@@ -197,7 +211,11 @@ sum_of_squares(3, 4)
 * Body
     * The first line squares `x` and `y` independently and then adds the results together
 
-> Cool fact - this function also works with vectors of numbers
+{{% alert note %}}
+
+Cool fact - this function also works with vectors of numbers
+
+{{% /alert %}}
 
 ```{r function-vectorize}
 x <- c(2, 4, 6)

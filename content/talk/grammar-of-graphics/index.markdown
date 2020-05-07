@@ -1,7 +1,7 @@
 ---
 title: "Visualizations and the grammar of graphics"
-date: 2019-10-03T12:30:00
-publishDate: 2019-04-03T13:30:00
+date: 2020-04-08T13:30:00-06:00
+publishDate: 2019-04-03T13:30:00-06:00
 draft: false
 type: "talk"
 
@@ -9,7 +9,7 @@ aliases: ["/cm002.html"]
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-time_end: 2019-10-03T13:50:00
+time_end: 2020-04-08T14:50:00-06:00
 all_day: false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
@@ -20,7 +20,7 @@ abstract: ""
 summary: "Introduction to data visualizations, the grammar of graphics, and ggplot2."
 
 # Location of event.
-location: "Room 104, Stuart Hall, Chicago, IL"
+location: "Online"
 
 # Is this a selected talk? (true/false)
 selected: false
@@ -34,6 +34,7 @@ url_pdf: ""
 url_slides: "/slides/visualizations-and-the-grammar-of-graphics/"
 url_video: ""
 url_code: ""
+url_notes: "https://hackmd.io/@cfss-sp20/visualizations-and-the-grammar-of-graphics"
 
 # Does the content use math formatting?
 math: false
@@ -86,11 +87,14 @@ math: false
 * [Data visualization with ggplot2 cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
 * [RStudio IDE Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf) - if you don't know what all the buttons and panels do in RStudio, this is a great decoder
 
-## What you need to do
+## What you need to do after class
 
-* [Register your GitHub username for the course](https://forms.gle/6YDKXHpEGPkc9sX28) - all remaining homework assignments will be in **private repositories**. Private repos can only be seen and edited by members of our [course organization](https://github.com/uc-cfss). Once you register your GitHub account, I will invite you to join the course organization. If you don't register your account, you won't have access to any of the homework assignments.
-* [If you are not currently registered, complete this petition to enroll in the course](https://goo.gl/forms/ZERPvUxvPxX5SZnj2)
+* [Register your GitHub username for the course](https://forms.gle/U58Z6ShPWXewwJoF7) - all remaining homework assignments will be in **private repositories**. Private repos can only be seen and edited by members of our [course organization](https://github.com/cfss-sp20). Once you register your GitHub account, I will invite you to join the course organization. If you don't register your account, you won't have access to any of the homework assignments.
 * [Complete the first homework assignment](/homework/edit-readme/)
 * Install the [`rcfss`](https://github.com/uc-cfss/rcfss) library from GitHub. To install the package, run the command `devtools::install_github("uc-cfss/rcfss")` in the console. We will be using data from this package in class next week.
 
-> If you do not already have the `devtools` library installed, you will get an error. Go back and install this first using `install.packages("devtools")`, then run `devtools::install_github("uc-cfss/rcfss")` in the console.
+{{% alert note %}}
+
+If you do not already have the `devtools` library installed, you will get an error. Go back and install this first using `install.packages("devtools")`, then run `devtools::install_github("uc-cfss/rcfss")` in the console.
+
+{{% /alert %}}

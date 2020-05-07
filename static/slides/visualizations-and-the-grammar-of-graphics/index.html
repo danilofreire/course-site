@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>Visualizations and the Grammar of Graphics</title>
     <meta charset="utf-8" />
@@ -277,64 +277,11 @@ class: center
 * Faceting
 
 ]
-
----
-
-
-```r
-plot_troops &lt;- ggplot(data = troops,
-                      mapping = aes(x = long, y = lat)) +
-  geom_path(mapping = aes(size = survivors,
-                          color = direction,
-                          group = group))
-plot_troops
-```
-
-&lt;img src="index_files/figure-html/plot_troops-1.png" width="864" /&gt;
-
----
-
-
-```r
-plot_both &lt;- plot_troops + 
-  geom_text(data = cities, mapping = aes(label = city), size = 4)
-plot_both
-```
-
-&lt;img src="index_files/figure-html/plot_both-1.png" width="864" /&gt;
-
----
-
-
-```r
-plot_polished &lt;- plot_both +
-  scale_size(range = c(0, 12),
-             breaks = c(10000, 20000, 30000),
-             labels = c("10,000", "20,000", "30,000")) + 
-  scale_color_manual(values = c("tan", "grey50")) +
-  coord_map() +
-  labs(title = "Map of Napoleon's Russian campaign of 1812",
-       x = NULL,
-       y = NULL)
-plot_polished
-```
-
-&lt;img src="index_files/figure-html/plot_polished-1.png" width="864" /&gt;
-
----
-
-
-```r
-plot_polished +
-  theme_void() +
-  theme(legend.position = "none")
-```
-
-&lt;img src="index_files/figure-html/plot_final-1.png" width="864" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script src="https://cfss.uchicago.edu/slides/macros.js"></script>
+<script src="https://platform.twitter.com/widgets.js"></script>
 <script>var slideshow = remark.create({
 "highlightLanguage": "r",
 "highlightStyle": "github",
@@ -379,9 +326,35 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     deleted = true;
   });
-})();</script>
-
-<script>
+})();
+(function() {
+  "use strict"
+  /* Replace <script> tags in slides area to make them executable
+   *
+   * Runs after post-processing of markdown source into slides and replaces only
+   * <script>s on the last slide of continued slides using the .has-continuation
+   * class added by xaringan. Finally, any <script>s in the slides area that
+   * aren't executed are commented out.
+   */
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container:not(.has-continuation) script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+  var scriptsNotExecuted = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container.has-continuation script'
+  );
+  if (!scriptsNotExecuted.length) return;
+  for (var i = 0; i < scriptsNotExecuted.length; i++) {
+    var comment = document.createComment(scriptsNotExecuted[i].outerHTML)
+    scriptsNotExecuted[i].parentElement.replaceChild(comment, scriptsNotExecuted[i])
+  }
+})();
 (function() {
   var links = document.getElementsByTagName('a');
   for (var i = 0; i < links.length; i++) {
@@ -390,7 +363,23 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
   }
 })();
-</script>
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
 
 <script>
 slideshow._releaseMath = function(el) {

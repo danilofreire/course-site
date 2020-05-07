@@ -1,7 +1,7 @@
 ---
 title: "Getting data from the web: scraping"
-date: 2019-11-19T12:30:00
-publishDate: 2019-05-15T13:30:00
+date: 2020-05-27T15:00:00-06:00
+publishDate: 2019-05-15T13:30:00-06:00
 draft: false
 type: "talk"
 
@@ -9,7 +9,7 @@ aliases: ["/cm016.html"]
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-time_end: 2019-11-19T13:50:00
+time_end: 2020-05-27T16:20:00-06:00
 all_day: false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
@@ -20,7 +20,7 @@ abstract: ""
 summary: "Practice scraping content from web pages using rvest."
 
 # Location of event.
-location: "Room 104, Stuart Hall, Chicago, IL"
+location: "Online"
 
 # Is this a selected talk? (true/false)
 selected: false
@@ -62,7 +62,6 @@ knitr::opts_chunk$set(echo = FALSE)
     * `demo("united")` - how to scrape a web page which requires a login
     * [Scraping IMDB](https://blog.rstudio.org/2014/11/24/rvest-easy-web-scraping-with-r/)
 
-## What you need to do
+## What you need to do after class
 
-* Start [homework 7](/homework/webdata/)
-* [Obtain an API key from the Census Bureau](https://api.census.gov/data/key_signup.html) - you will need access to their API next week for geospatial visualizations
+* Start [homework 8](/homework/webdata/)

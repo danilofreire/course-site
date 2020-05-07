@@ -1,6 +1,6 @@
 ---
 date: "2018-09-09T00:00:00-05:00"
-draft: false
+draft: true
 menu:
   setup:
     parent: R/RStudio
@@ -60,7 +60,7 @@ To complete each course assignment, you will [clone a Git repository](/faq/homew
 
 Unlike using RStudio locally, you cannot [store your username and password](/setup/git-cache-credentials/). You will need to enter it every time you sync your Git repository with GitHub.
 
-### Acknowledgments {.toc-ignore}
+## Acknowledgments
 
 ```{r child = here::here("R", "_ack_stat545.Rmd")}
 ```
